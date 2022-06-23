@@ -16,8 +16,11 @@ public class Window extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel panel;
 	private InputHandler inputs;
+
+
 	public Window(InputHandler inputs) {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
 		this.inputs = inputs;
 		this.setLayout(new CardLayout(0, 0));
 		
@@ -31,7 +34,8 @@ public class Window extends JFrame {
 		panel.addMouseMotionListener(this.inputs);
 
 		HomePanel home = new HomePanel();
-		getContentPane().add(home);
+		this.add(panel);
+		this.add(home);
 		
 
 		pack();
