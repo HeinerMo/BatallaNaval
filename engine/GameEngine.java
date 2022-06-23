@@ -68,7 +68,6 @@ public class GameEngine extends Thread {
 	private void render() {
 		clearFrame();
 		game.render((Graphics2D) buffer.getGraphics());
-		window.drawFrame(buffer);
 	}
 
 	private void clearFrame() {
