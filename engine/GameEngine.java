@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import engine.util.Util;
 import game.Game;
 import gui.Window;
 
@@ -12,20 +13,14 @@ public class GameEngine extends Thread {
 
 	private int fps = 0;
 	private int ups = 0;
-	private final int WIDTH;
-	private final int HEIGHT;
 	private BufferedImage buffer;
 	private Window window;
 	private Game game;
 
-	public GameEngine(int width, int height, Window window, Game game) {
-		this.WIDTH = width;
-		this.HEIGHT = height;
+	public GameEngine(Window window, Game game) {
 		this.window = window;
 		this.game = game;
-		Game.WIDTH = width;
-		Game.HEIGHT = height;
-		buffer = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		buffer = new BufferedImage(Util.WIDTH, Util.HEIGHT, BufferedImage.TYPE_INT_RGB);
 	}
 
 	@Override
@@ -79,7 +74,7 @@ public class GameEngine extends Thread {
 	private void clearFrame() {
 		Graphics g = buffer.getGraphics();
 		g.setColor(Color.black);
-		g.fillRect(0, 0, WIDTH, HEIGHT);
+		g.fillRect(0, 0, Util.WIDTH, Util.HEIGHT);
 	}
 
 }
