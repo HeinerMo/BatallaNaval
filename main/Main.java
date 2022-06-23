@@ -10,9 +10,8 @@ public class Main {
 	public static void main(String[] args) {
 		InputHandler inputs = new InputHandler();
 		Window window = new Window(inputs);
-		Game game = new Game();
-		GameEngine engine = new GameEngine(window, game);
-		engine.start();
+		//Game game = new Game();
+		//GameEngine engine = new GameEngine(window, game);
+		//engine.start();
 	}
-
 }
