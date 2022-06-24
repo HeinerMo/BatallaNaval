@@ -44,12 +44,14 @@ public class InicioPanel extends JPanel{
         this.jlNaves.setFont(new java.awt.Font("Tahoma", 0, 20));
         this.add(this.jlNaves); 
 
+
         String tiposNaves[]={"Tipo 1","Tipo 2","Tipo 3"};        
-        this.jcbNaves=new JComboBox(tiposNaves);    
+        this.jcbNaves=new JComboBox(tiposNaves); 
+        this.jcbNaves.setActionCommand("TipoNaves");
+        this.jcbNaves.addActionListener(a);   
         this.jcbNaves.setBounds(300, 250,200,30);
         this.jcbNaves.setFont(new java.awt.Font("Tahoma", 0, 18));
-        this.add(this.jcbNaves); 
-
+        this.add(this.jcbNaves);
 
         this.jbtnCargarNuevaPartida = new JButton("Cargar Partida");
         this.jbtnCargarNuevaPartida.setActionCommand("NuevaPartida");
@@ -60,4 +62,8 @@ public class InicioPanel extends JPanel{
         this.add(this.jbtnCargarNuevaPartida);
     }// initLabels
 
+
+    public String item(){
+        return this.jcbNaves.getSelectedItem().toString();
+    }
 }
