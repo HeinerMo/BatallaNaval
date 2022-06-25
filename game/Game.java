@@ -43,7 +43,8 @@ public class Game {
 				&& j * tileSize < Util.mouseY
 				&& j * tileSize + tileSize > Util.mouseY) {
 					g.setColor(Color.green);
-					g.fillRect(i * tileSize, j * tileSize, tileSize, tileSize);
+					//g.fillRect(i * tileSize, j * tileSize, tileSize, tileSize);
+					g.drawImage(Util.images.get("largeShip"), i * tileSize, j * tileSize, tileSize, tileSize * 4,null);
 				}
 				
 				g.setColor(Color.black);
