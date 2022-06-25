@@ -19,6 +19,8 @@ public class Window extends JFrame implements ActionListener {
 	private HallOfFamePanel hallOfFamePanel;
 	private OpenGamePanel openGamePanel;
 	private GamePanel gamePanel;
+	private CreateNewGamePanel createNewGamePanel;
+	private PlayerVsPcPanel playerVsPcPanel; 
 
 	public Window() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -38,12 +40,16 @@ public class Window extends JFrame implements ActionListener {
 		hallOfFamePanel = new HallOfFamePanel(this);
 		openGamePanel = new OpenGamePanel(this);
 		gamePanel = new GamePanel();
+		createNewGamePanel = new CreateNewGamePanel(this);
+		playerVsPcPanel = new PlayerVsPcPanel(this);
 
 		this.add(homePanel);
 		this.add(helpPanel);
 		this.add(hallOfFamePanel);
 		this.add(openGamePanel);
 		this.add(gamePanel);
+		this.add(createNewGamePanel);
+		this.add(playerVsPcPanel);
 
 		// Agregar paneles a la distribución
 		layout.addLayoutComponent(homePanel, "homePanel");
@@ -51,6 +57,8 @@ public class Window extends JFrame implements ActionListener {
 		layout.addLayoutComponent(hallOfFamePanel, "hallOfFamePanel");
 		layout.addLayoutComponent(openGamePanel, "openGamePanel");
 		layout.addLayoutComponent(gamePanel, "GamePanel");
+		layout.addLayoutComponent(createNewGamePanel, "CreateNewGamePanel");
+		layout.addLayoutComponent(playerVsPcPanel, "PlayerVsPcPanel");
 
 	}
 
@@ -105,6 +113,10 @@ public class Window extends JFrame implements ActionListener {
 				layout.show(this.getContentPane(), "hallOfFamePanel");
 			} else if (e.getActionCommand().equals("openGame")) {
 				layout.show(this.getContentPane(), "openGamePanel");
+			} else if (e.getActionCommand().equals("createGame")) {
+				layout.show(this.getContentPane(), "CreateNewGamePanel");
+			} else if (e.getActionCommand().equals("jugVSPc")) {
+				layout.show(this.getContentPane(), "PlayerVsPcPanel");
 			}
 		}
 		System.out.println(e.getActionCommand());
