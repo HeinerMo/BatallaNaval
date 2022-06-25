@@ -4,7 +4,6 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
-import org.w3c.dom.events.MouseEvent;
 
 import engine.GameEngine;
 import game.Game;
@@ -42,7 +41,6 @@ public class GamePanel extends JPanel implements MouseMotionListener {
 
     @Override
     public void mouseDragged(java.awt.event.MouseEvent e) {
-        // TODO Auto-generated method stub
 
     }
 

@@ -2,21 +2,19 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
-
+import entity.LargeShip;
+import entity.MediumShip;
 import entity.Ship;
+import entity.SmallShip;
 import util.Util;
 
 public class Game {
 
 	private int tileSize;
 	private int tiles = 10;
-	private Image img;
-	private Ship ship;
+	private ArrayList<Ship> ships;
 
 	public Game() {
 		if (Util.WIDTH <= Util.HEIGHT) {
@@ -25,20 +23,17 @@ public class Game {
 			tileSize = Util.HEIGHT / tiles;
 		}
 
-		try {
-			img = ImageIO.read(new File("resources/imgs/water.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		ship = new Ship(4, 4, tileSize);
+		ships = new ArrayList<>();
+		ships.add(new SmallShip(2, 2, tileSize));
+		ships.add(new MediumShip(4, 2, tileSize));
+		ships.add(new LargeShip(6, 2, tileSize));
 	}
 
 	public void render(Graphics2D g) {
 
 		for (int i = 0; i < tiles; i++) {
 			for (int j = 0; j < tiles; j++) {
-				g.drawImage(img, i * tileSize, j * tileSize, tileSize, tileSize, null);
+				g.drawImage(Util.images.get("water"), i * tileSize, j * tileSize, tileSize, tileSize, null);
 			}
 		}
 		for (int i = 0; i < tiles; i++) {
@@ -56,7 +51,10 @@ public class Game {
 			}
 		}
 
-		ship.render(g);
+		for (Ship s: ships) {
+			s.render(g);
+		}
+
 	}
 
 	public void update() {
