@@ -6,11 +6,9 @@ public class Animation {
 	
 	private float speed;
 	private float startingTime;
-	private boolean finished;
 	
 	public Animation(float speed) {
 		this.speed = speed;
-		finished = false;
 	}
 	
 	public void start() {
@@ -32,7 +30,4 @@ public class Animation {
 		
 	}
 
-	public boolean isFinished() {
-		return finished;
-	}
 }
