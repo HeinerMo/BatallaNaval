@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import engine.util.Util;
+import util.Util;
 
 public class OpenGamePanel extends JPanel{
    

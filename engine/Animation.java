@@ -1,29 +1,38 @@
 package engine;
 
+import util.Util;
+
 public class Animation {
 	
-	private double duration;
-	private double startingTime;
+	private float speed;
+	private float startingTime;
+	private boolean finished;
 	
-	public Animation(int duration) {
-		this.duration = duration;
+	public Animation(float speed) {
+		this.speed = speed;
+		finished = false;
 	}
 	
 	public void start() {
-		startingTime = System.currentTimeMillis();
+		startingTime = Util.getTime();
 	}
 	
 	public void update() {
-		if (System.currentTimeMillis() - startingTime <= duration) {
+		if (Util.getTime() - startingTime >= speed) {
+			startingTime += speed;
 			onUpdate();
 		}
 	}
 	
 	/*
-	 * Este método debe ser sobre escrito por las clases hijas para poder implementar
-	 * la animación como tal. 
+	 * Este mÃ©todo debe ser sobre escrito por las clases hijas para poder implementar
+	 * la animaciÃ³n como tal. 
 	 * */
 	protected void onUpdate() {
 		
+	}
+
+	public boolean isFinished() {
+		return finished;
 	}
 }

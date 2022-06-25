@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
-import engine.util.Util;
+import util.Util;
 
 public class HallOfFamePanel extends JPanel{
    

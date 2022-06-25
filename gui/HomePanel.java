@@ -9,14 +9,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import util.Util;
+
 import javax.swing.ImageIcon;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.awt.*;
-
-
-import engine.util.Util;
 
 public class HomePanel extends JPanel{
 

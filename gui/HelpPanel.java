@@ -8,14 +8,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import util.Util;
+
 import javax.imageio.ImageIO;
 
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
-import engine.util.Util;
-
 import java.awt.*;
 
 public class HelpPanel extends JPanel{
