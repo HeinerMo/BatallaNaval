@@ -4,9 +4,9 @@ import java.awt.Graphics2D;
 
 public abstract class Entity {
 
-	protected double x, y;
+	protected int x, y;
 
-	public Entity(double x, double y) {
+	public Entity(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -15,11 +15,11 @@ public abstract class Entity {
 
 	public abstract void render(Graphics2D g);
 
-	public double getX() {
+	public int getX() {
 		return x;
 	}
 
-	public double getY() {
+	public int getY() {
 		return y;
 	}
 }

@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 
 public class Window extends JFrame implements ActionListener {
 
@@ -15,6 +14,11 @@ public class Window extends JFrame implements ActionListener {
 	private CardLayout layout;
 	private JMenuBar jmbMenuBar;
 	private JMenuItem jmInicio, jmAyuda, jmSalonFama, jmAbrirPartida;
+	private HomePanel homePanel;
+	private HelpPanel helpPanel;
+	private HallOfFamePanel hallOfFamePanel;
+	private OpenGamePanel openGamePanel;
+	private GamePanel gamePanel;
 
 	public Window() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -23,28 +27,30 @@ public class Window extends JFrame implements ActionListener {
 		this.setLayout(layout);
 		initPanels();
 		pack();
-		setResizable(false);
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 
 	private void initPanels() {
-		//Agregar paneles a la ventana
-		HomePanel homePanel= new HomePanel(this);
-		HelpPanel helpPanel = new HelpPanel(this);
-		HallOfFamePanel hallOfFamePanel = new HallOfFamePanel(this);
-		OpenGamePanel openGamePanel = new OpenGamePanel(this);
+		// Agregar paneles a la ventana
+		homePanel = new HomePanel(this);
+		helpPanel = new HelpPanel(this);
+		hallOfFamePanel = new HallOfFamePanel(this);
+		openGamePanel = new OpenGamePanel(this);
+		gamePanel = new GamePanel();
 
 		this.add(homePanel);
 		this.add(helpPanel);
 		this.add(hallOfFamePanel);
 		this.add(openGamePanel);
+		this.add(gamePanel);
 
-		//Agregar paneles a la distribución
+		// Agregar paneles a la distribución
 		layout.addLayoutComponent(homePanel, "homePanel");
 		layout.addLayoutComponent(helpPanel, "helpPanel");
 		layout.addLayoutComponent(hallOfFamePanel, "hallOfFamePanel");
 		layout.addLayoutComponent(openGamePanel, "openGamePanel");
+		layout.addLayoutComponent(gamePanel, "GamePanel");
 
 	}
 
@@ -76,18 +82,30 @@ public class Window extends JFrame implements ActionListener {
 		this.jmAbrirPartida.addActionListener(this);
 		this.jmbMenuBar.add(this.jmAbrirPartida);
 
+		this.jmAbrirPartida = new JMenuItem("TestGame");
+		jmAbrirPartida.setActionCommand("GamePanel");
+		this.jmAbrirPartida.setFont(new java.awt.Font("Tahoma", 0, 20));
+		this.jmAbrirPartida.addActionListener(this);
+		this.jmbMenuBar.add(this.jmAbrirPartida);
+
 	}// initMenu
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("home")) {
-			layout.show(this.getContentPane(), "homePanel");
-		} else if (e.getActionCommand().equals("help")){
-			layout.show(this.getContentPane(), "helpPanel");
-		} else if (e.getActionCommand().equals("hallOfFame")){
-			layout.show(this.getContentPane(), "hallOfFamePanel");
-		} else if (e.getActionCommand().equals("openGame")){
-			layout.show(this.getContentPane(), "openGamePanel");
+		if (e.getActionCommand().equals("GamePanel")) {
+			layout.show(this.getContentPane(), "GamePanel");
+			gamePanel.RunGame();
+		} else {
+			gamePanel.stopGame();
+			if (e.getActionCommand().equals("home")) {
+				layout.show(this.getContentPane(), "homePanel");
+			} else if (e.getActionCommand().equals("help")) {
+				layout.show(this.getContentPane(), "helpPanel");
+			} else if (e.getActionCommand().equals("hallOfFame")) {
+				layout.show(this.getContentPane(), "hallOfFamePanel");
+			} else if (e.getActionCommand().equals("openGame")) {
+				layout.show(this.getContentPane(), "openGamePanel");
+			}
 		}
 		System.out.println(e.getActionCommand());
 	}

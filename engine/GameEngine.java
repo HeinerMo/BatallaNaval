@@ -15,28 +15,35 @@ public class GameEngine extends Thread {
 	private BufferedImage buffer;
 	private Graphics graphics;
 	private Game game;
+	private boolean running;
 
 	public GameEngine(Graphics graphics, Game game) {
 		this.graphics = graphics;
 		this.game = game;
-		buffer = new BufferedImage(Util.WIDTH, Util.HEIGHT, BufferedImage.TYPE_INT_RGB);
+		buffer = new BufferedImage(Util.WIDTH, Util.HEIGHT, BufferedImage.TYPE_INT_ARGB);
 	}
 
 	@Override
-	public synchronized void start() {
+	public void start() {
 		super.start();
+	}
+
+	@Override
+	public void run() {
+		super.run();
 		loop();
 	}
 
 
 	private void loop() {
 		
+		running = true;
 		long lastTime = System.nanoTime();
 		long timer = System.currentTimeMillis();
 		final double ns = 1000000000.0 / 60.0;
 		double delta = 0;
 		
-		while (true) {
+		while (running) {
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
 			lastTime = now;
@@ -68,6 +75,11 @@ public class GameEngine extends Thread {
 	private void render() {
 		clearFrame();
 		game.render((Graphics2D) buffer.getGraphics());
+		graphics.drawImage(buffer, 0, 0, null);
+	}
+
+	public void setRunning(boolean running) {
+		this.running = running;
 	}
 
 	private void clearFrame() {
@@ -76,4 +88,7 @@ public class GameEngine extends Thread {
 		g.fillRect(0, 0, Util.WIDTH, Util.HEIGHT);
 	}
 
+	public void setGraphics(Graphics g) {
+		this.graphics = g;
+	}
 }
