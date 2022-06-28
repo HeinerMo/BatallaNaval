@@ -33,7 +33,7 @@ public class PlayerVsPcPanel extends JPanel{
 		this.setPreferredSize(new Dimension(Util.WIDTH, Util.HEIGHT));
 		this.setLayout(null);
 		this.initComponents(a);
-		this.setBackground(new Color(27,138,150));
+        this.setBackground(new Color(0x007b00) );
         this.setName("playerVsPcPanel");
 	}// constructor
 
@@ -41,11 +41,13 @@ public class PlayerVsPcPanel extends JPanel{
         this.jlShips=new JLabel("Elija el tipo de nave y su respectiva cantidad");  
         this.jlShips.setBounds(200,50, 450,30);  
         this.jlShips.setFont(new java.awt.Font("Tahoma", 0, 20));
+        this.jlShips.setForeground(Color.WHITE);
         this.add(this.jlShips); 
 
         this.jlShip1=new JLabel("Caravela");  
         this.jlShip1.setBounds(200,100, 450,30);  
         this.jlShip1.setFont(new java.awt.Font("Tahoma", 0, 20));
+        this.jlShip1.setForeground(Color.WHITE);
         this.add(this.jlShip1); 
 
         this.jlImgShip1 = new JLabel();
@@ -62,11 +64,14 @@ public class PlayerVsPcPanel extends JPanel{
 
         this.jtfShip1=new JTextField();  
         this.jtfShip1.setBounds(350,180, 200,30);  
+        this.jtfShip1.setBackground(Color.BLACK);
+        this.jtfShip1.setForeground(Color.WHITE);
         this.add(this.jtfShip1); 
 
         this.jlShip2=new JLabel("Pirata");  
         this.jlShip2.setBounds(200,250, 450,30);  
         this.jlShip2.setFont(new java.awt.Font("Tahoma", 0, 20));
+        this.jlShip2.setForeground(Color.WHITE);
         this.add(this.jlShip2); 
 
         this.jlImgShip2 = new JLabel();
@@ -82,12 +87,15 @@ public class PlayerVsPcPanel extends JPanel{
 		this.add(this.jlImgShip2);
 
         this.jtfShip2=new JTextField();  
-        this.jtfShip2.setBounds(350,330, 200,30);  
+        this.jtfShip2.setBounds(350,330, 200,30); 
+        this.jtfShip2.setBackground(Color.BLACK);
+        this.jtfShip2.setForeground(Color.WHITE); 
         this.add(this.jtfShip2); 
 
         this.jlShip3=new JLabel("Pirata 2");  
         this.jlShip3.setBounds(200,400, 450,30);  
         this.jlShip3.setFont(new java.awt.Font("Tahoma", 0, 20));
+        this.jlShip3.setForeground(Color.WHITE);
         this.add(this.jlShip3); 
 
         this.jlImgShip3 = new JLabel();
@@ -104,6 +112,8 @@ public class PlayerVsPcPanel extends JPanel{
 
         this.jtfShip3=new JTextField();  
         this.jtfShip3.setBounds(350,480, 200,30);  
+        this.jtfShip3.setBackground(Color.BLACK);
+        this.jtfShip3.setForeground(Color.WHITE); 
         this.add(this.jtfShip3); 
 
         this.jbtnLoadGame = new JButton("Cargar Partida");
@@ -111,7 +121,8 @@ public class PlayerVsPcPanel extends JPanel{
         this.jbtnLoadGame.addActionListener(a);
         this.jbtnLoadGame.setFont(new java.awt.Font("Tahoma", 0, 20));
         this.jbtnLoadGame.setBounds(300, 600, 200, 30);
-        this.jbtnLoadGame.setBackground(new Color(138,157,159));
+        this.jbtnLoadGame.setBackground(Color.WHITE);
+        this.jbtnLoadGame.setForeground(Color.BLACK);
         this.add(this.jbtnLoadGame);
     }// initLabels
 }

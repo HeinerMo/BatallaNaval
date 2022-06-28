@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import util.Util;
 
@@ -22,14 +23,15 @@ public class HelpPanel extends JPanel{
     JLabel jlFoto;
     private BufferedImage buffDesa;
     private Image image;
-    private JLabel jlInfo, jlInstruc, jlSusan, jlHeiner, jlBach, jlUCR;
+    private JLabel jlInfo, jlInstruc, jlSusan, jlHeiner,  jlSusanCorreo, jlHeinerCorreo;
+    private JTextArea jtaInstrc;
 
     public HelpPanel(ActionListener a) {
 		super();
 		this.setPreferredSize(new Dimension(Util.WIDTH, Util.HEIGHT));
 		this.setLayout(null);
 		this.initComponents(a);
-		this.setBackground(new Color(27,138,150));
+        this.setBackground(new Color(0x007b00) );
         this.setName("ayudaPanel");
 	}// constructor
 
@@ -37,11 +39,22 @@ public class HelpPanel extends JPanel{
         this.jlInstruc=new JLabel("Instrucciones");  
         this.jlInstruc.setBounds(25,20, 350,30); 
         this.jlInstruc.setFont(new java.awt.Font("Tahoma", 0, 20));
+        this.jlInstruc.setForeground(Color.WHITE);
         this.add(this.jlInstruc); 
+
+        String instrucciones="1.Coloque estratégicamente la totalidad de los barcos elegidos en la posición que desee,"+ "\n"+"ya sea horizontal o vertical *Debe colocarlos en menos de 1 minuto* ";
+        this.jtaInstrc = new JTextArea(instrucciones); //cadena de texto
+        this.jtaInstrc.setBounds(25,60, 400,400);
+        this.jtaInstrc.setBackground(new Color(0x007b00) );
+        this.jtaInstrc.setForeground(Color.WHITE);
+        this.jtaInstrc.setFont(new java.awt.Font("Tahoma", 0, 16));
+        this.jtaInstrc.setEditable(false);
+        this.add(this.jtaInstrc);
 
         this.jlInfo=new JLabel("Información de los desarrolladores");  
         this.jlInfo.setBounds(440,20, 350,30); 
         this.jlInfo.setFont(new java.awt.Font("Tahoma", 0, 20));
+        this.jlInfo.setForeground(Color.WHITE);
         this.add(this.jlInfo);  
 
         this.jlFoto = new JLabel();
@@ -56,26 +69,30 @@ public class HelpPanel extends JPanel{
 		this.jlFoto.setIcon(new ImageIcon(this.image));
 		this.add(this.jlFoto);
 
-        this.jlUCR=new JLabel("Universidad de Costa Rica");  
-        this.jlUCR.setBounds(470,390, 350,30); 
-        this.jlUCR.setFont(new java.awt.Font("Tahoma", 0, 20));
-        this.add(this.jlUCR);
-
-        this.jlBach=new JLabel("Bach. Informática Empresarial");  
-        this.jlBach.setBounds(460,440, 350,30); 
-        this.jlBach.setFont(new java.awt.Font("Tahoma", 0, 20));
-        this.add(this.jlBach);
-
-
-        this.jlHeiner=new JLabel("Heiner Monge López 24 años");  
-        this.jlHeiner.setBounds(460,490, 350,30); 
+        this.jlHeiner=new JLabel("Heiner Monge López");  
+        this.jlHeiner.setBounds(470,390, 350,30); 
         this.jlHeiner.setFont(new java.awt.Font("Tahoma", 0, 20));
+        this.jlHeiner.setForeground(Color.WHITE);
         this.add(this.jlHeiner);
 
-        this.jlSusan=new JLabel("Susan Sojo Castro 22 años");  
-        this.jlSusan.setBounds(460,540, 350,30); 
+        this.jlHeinerCorreo=new JLabel("heinermongelopez@gmail.com ");  
+        this.jlHeinerCorreo.setBounds(460,440, 350,30); 
+        this.jlHeinerCorreo.setFont(new java.awt.Font("Tahoma", 0, 20));
+        this.jlHeinerCorreo.setForeground(Color.WHITE);
+        this.add(this.jlHeinerCorreo);
+
+
+        this.jlSusan=new JLabel("Susan Sojo Castro");  
+        this.jlSusan.setBounds(460,490, 350,30); 
         this.jlSusan.setFont(new java.awt.Font("Tahoma", 0, 20));
+        this.jlSusan.setForeground(Color.WHITE);
         this.add(this.jlSusan);
+
+        this.jlSusanCorreo=new JLabel("sojos204@gmail.com");  
+        this.jlSusanCorreo.setBounds(460,540, 350,30); 
+        this.jlSusanCorreo.setFont(new java.awt.Font("Tahoma", 0, 20));
+        this.jlSusanCorreo.setForeground(Color.WHITE);
+        this.add(this.jlSusanCorreo);
 
 
 

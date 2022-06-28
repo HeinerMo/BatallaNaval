@@ -11,11 +11,6 @@ import javax.swing.JTextField;
 
 import util.Util;
 
-import javax.swing.ImageIcon;
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.awt.*;
 
 public class HomePanel extends JPanel{
 
@@ -29,7 +24,7 @@ public class HomePanel extends JPanel{
 		this.setPreferredSize(new Dimension(Util.WIDTH, Util.HEIGHT));
 		this.setLayout(null);
 		this.initComponents(a);
-		this.setBackground(new Color(27,138,150));
+        this.setBackground(new Color(0x007b00) );
         this.setName("homePanel");
 	}// constructor
 
@@ -37,10 +32,13 @@ public class HomePanel extends JPanel{
         this.jlName=new JLabel("Ingrese su nombre");
         this.jlName.setBounds(300,100, 200,30);
         this.jlName.setFont(new java.awt.Font("Tahoma", 0, 20));
+        this.jlName.setForeground(Color.WHITE);
         this.add(this.jlName);
 
         this.jtfName=new JTextField();  
         this.jtfName.setBounds(290,150, 200,30);  
+        this.jtfName.setBackground(Color.BLACK);
+        this.jtfName.setForeground(Color.WHITE);
         this.add(this.jtfName); 
 
         this.jbtnCreate = new JButton("Crear Partida");
@@ -48,15 +46,17 @@ public class HomePanel extends JPanel{
         this.jbtnCreate.addActionListener(a);
         this.jbtnCreate.setFont(new java.awt.Font("Tahoma", 0, 20));
         this.jbtnCreate.setBounds(290, 250, 200, 30);
-        this.jbtnCreate.setBackground(new Color(138,157,159));
+        this.jbtnCreate.setBackground(Color.WHITE);
+        this.jbtnCreate.setForeground(Color.BLACK);
         this.add(this.jbtnCreate);
 
         this.jbtnLoad = new JButton("Cargar Partida");
         this.jbtnLoad.setActionCommand("loadGame");
         this.jbtnLoad.addActionListener(a);
         this.jbtnLoad.setFont(new java.awt.Font("Tahoma", 0, 20));
+        this.jbtnLoad.setBackground(Color.WHITE);
+        this.jbtnLoad.setForeground(Color.BLACK);
         this.jbtnLoad.setBounds(290, 300, 200, 30);
-        this.jbtnLoad.setBackground(new Color(138,157,159));
         this.add(this.jbtnLoad);
     }// initLabels
 }

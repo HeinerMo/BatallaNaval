@@ -22,7 +22,7 @@ public class HallOfFamePanel extends JPanel{
 		this.setPreferredSize(new Dimension(Util.WIDTH, Util.HEIGHT));
 		this.setLayout(null);
 		this.initComponents(a);
-		this.setBackground(new Color(27,138,150));
+        this.setBackground(new Color(0x007b00) );
         this.setName("salonFamaPanel");
 	}// constructor
 

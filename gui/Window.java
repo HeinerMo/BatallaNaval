@@ -40,7 +40,6 @@ public class Window extends JFrame implements ActionListener {
 	private void initPanels() {
 		// Agregar paneles a la ventana
 		homePanel = new HomePanel(this);
-		homePanel.setBackground(new Color(0x007b00) );
 		helpPanel = new HelpPanel(this);
 		hallOfFamePanel = new HallOfFamePanel(this);
 		openGamePanel = new OpenGamePanel(this);
