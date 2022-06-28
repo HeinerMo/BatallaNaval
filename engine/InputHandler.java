@@ -33,7 +33,6 @@ public class InputHandler implements MouseListener, KeyListener, MouseMotionList
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
@@ -49,17 +48,14 @@ public class InputHandler implements MouseListener, KeyListener, MouseMotionList
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -75,22 +71,19 @@ public class InputHandler implements MouseListener, KeyListener, MouseMotionList
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println(e.getKeyCode());
+		System.out.println("Pressed: " + e.getKeyCode());
 		keys[e.getKeyCode()] = true;
-
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		System.out.println(e.getKeyCode());
+		System.out.println("Released: " + e.getKeyCode());
 		keys[e.getKeyCode()] = false;
-
 	}
 
 }

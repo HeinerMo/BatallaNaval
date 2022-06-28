@@ -1,5 +1,4 @@
 package engine;
-
 import util.Util;
 
 abstract class Animation {

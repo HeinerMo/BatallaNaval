@@ -26,6 +26,7 @@ public class Window extends JFrame implements ActionListener {
 	private PlayerVsPcPanel playerVsPcPanel; 
 
 	public Window() {
+		super();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		layout = new CardLayout(0, 0);
 		initMenu();

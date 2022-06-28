@@ -2,6 +2,8 @@ package main;
 
 import gui.Window;
 import util.Util;
+import javax.swing.JFrame;
+import engine.InputHandler;
 
 public class Main {
 

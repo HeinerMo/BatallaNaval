@@ -13,22 +13,18 @@ public class GamePanel extends JPanel {
 
     private GameEngine engine;
     private Game game;
-    private InputHandler inputs;
 
     public GamePanel() {
         super();
         this.setPreferredSize(new Dimension(Util.WIDTH, Util.HEIGHT));
-        
-        inputs = InputHandler.getInstance();
-        this.addKeyListener(inputs);
-        this.addMouseMotionListener(inputs);
-        this.addMouseListener(inputs);
+        this.addKeyListener(InputHandler.getInstance());
+        this.addMouseMotionListener(InputHandler.getInstance());
+        this.addMouseListener(InputHandler.getInstance());
         this.setFocusable(true);
-        this.setRequestFocusEnabled(true);
-        this.requestFocusInWindow();
     }
 
     public void RunGame() {
+    	this.requestFocus();
         
         if (game == null) {
             game = new Game();

@@ -16,7 +16,7 @@ public class Game {
 	private int tileSize;
 	private int tiles = 10;
 	private ArrayList<Ship> ships;
-	private boolean rotate;
+	private boolean rotate, justRotated;
 
 	public Game() {
 		if (Util.WIDTH <= Util.HEIGHT) {
@@ -29,7 +29,7 @@ public class Game {
 		ships.add(new SmallShip(2, 2, tileSize));
 		ships.add(new MediumShip(4, 2, tileSize));
 		ships.add(new LargeShip(6, 2, tileSize));
-		rotate = false;
+		rotate = justRotated = false;
 	}
 
 	public void render(Graphics2D g) {
@@ -69,6 +69,13 @@ public class Game {
 	}
 
 	public void update() {
+		
+		if (InputHandler.keys[82] && !justRotated) {
+			rotate = !rotate;
+			justRotated = true;
+		} else if (!InputHandler.keys[82] && justRotated){
+			justRotated = false;
+		}
 
 		for (Ship s : ships) {
 			s.update();
