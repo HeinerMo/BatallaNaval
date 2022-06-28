@@ -4,22 +4,28 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
-
 import engine.GameEngine;
+import engine.InputHandler;
 import game.Game;
 import util.Util;
-import java.awt.event.MouseMotionListener;
 
-public class GamePanel extends JPanel implements MouseMotionListener {
+public class GamePanel extends JPanel {
 
     private GameEngine engine;
     private Game game;
+    private InputHandler inputs;
 
     public GamePanel() {
         super();
         this.setPreferredSize(new Dimension(Util.WIDTH, Util.HEIGHT));
+        
+        inputs = InputHandler.getInstance();
+        this.addKeyListener(inputs);
+        this.addMouseMotionListener(inputs);
+        this.addMouseListener(inputs);
         this.setFocusable(true);
-        this.addMouseMotionListener(this);
+        this.setRequestFocusEnabled(true);
+        this.requestFocusInWindow();
     }
 
     public void RunGame() {
@@ -37,16 +43,6 @@ public class GamePanel extends JPanel implements MouseMotionListener {
         if (engine != null) {
             engine.setRunning(false);
         }
-    }
-
-    @Override
-    public void mouseDragged(java.awt.event.MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseMoved(java.awt.event.MouseEvent e) {
-        Util.updateMouse(e.getX(), e.getY());
     }
 
 }

@@ -58,7 +58,7 @@ public class GameEngine extends Thread {
 			if (System.currentTimeMillis() - timer >= 1000) {
 				timer += 1000;
 				//window.setTitle("Stats:   |  UPS: " + ups + " FPS: " + fps);
-				System.out.println("Stats:   |  UPS: " + ups + " FPS: " + fps);
+				//System.out.println("Stats:   |  UPS: " + ups + " FPS: " + fps);
 				ups = 0;
 				fps = 0;
 			}

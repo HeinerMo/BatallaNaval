@@ -1,12 +1,15 @@
 package gui;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
+import engine.InputHandler;
 
 public class Window extends JFrame implements ActionListener {
 
@@ -36,6 +39,7 @@ public class Window extends JFrame implements ActionListener {
 	private void initPanels() {
 		// Agregar paneles a la ventana
 		homePanel = new HomePanel(this);
+		homePanel.setBackground(new Color(0x007b00) );
 		helpPanel = new HelpPanel(this);
 		hallOfFamePanel = new HallOfFamePanel(this);
 		openGamePanel = new OpenGamePanel(this);

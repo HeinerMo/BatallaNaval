@@ -1,12 +1,15 @@
 package util;
 
-import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import javax.imageio.ImageIO;
+
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 public class Util {
     public static final int WIDTH = 800;
@@ -15,7 +18,7 @@ public class Util {
     public static int mouseX = 0;
     public static int mouseY = 0;
 
-    public static Map<String, Image> images = new HashMap<>();
+    public static Map<String, BufferedImage> images = new HashMap<>();
 
     /**
      * Obtener el tiempo transcurrido desde el inicio del juego
@@ -38,5 +41,22 @@ public class Util {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static BufferedImage rotateImage(BufferedImage bimg) {
+        Double angle = -90.0;
+        double sin = Math.abs(Math.sin(Math.toRadians(angle))),
+               cos = Math.abs(Math.cos(Math.toRadians(angle)));
+        int w = bimg.getWidth();
+        int h = bimg.getHeight();
+        int neww = (int) Math.floor(w*cos + h*sin),
+            newh = (int) Math.floor(h*cos + w*sin);
+        BufferedImage rotated = new BufferedImage(neww, newh, bimg.getType());
+        Graphics2D graphic = rotated.createGraphics();
+        graphic.translate((neww-w)/2, (newh-h)/2);
+        graphic.rotate(Math.toRadians(angle), w/2, h/2);
+        graphic.drawRenderedImage(bimg, null);
+        graphic.dispose();
+        return rotated;
     }
 }

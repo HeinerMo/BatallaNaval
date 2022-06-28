@@ -2,7 +2,7 @@ package engine;
 
 import util.Util;
 
-public class Animation {
+abstract class Animation {
 	
 	private float speed;
 	private float startingTime;
@@ -27,7 +27,7 @@ public class Animation {
 	 * la animación como tal. 
 	 * */
 	protected void onUpdate() {
-		
+
 	}
 
 }
