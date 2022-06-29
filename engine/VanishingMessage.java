@@ -41,8 +41,8 @@ public class VanishingMessage extends Animation{
 	}
 	
 	public void render(Graphics2D g) {
-		g.setColor(new Color(255, 255, 255, (int) alpha));
-		g.setFont(new Font("", 1, 18));
+		g.setColor(new Color(0, 0, 0, (int) alpha));
+		g.setFont(new Font("Consolas", 1, 20));
 		g.drawString(text, x, y);
 	}
 
