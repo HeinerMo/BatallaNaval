@@ -12,20 +12,14 @@ import javax.swing.JTextField;
 import util.Util;
 
 import javax.swing.ImageIcon;
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.awt.*;
 
 public class PlayerVsPcPanel extends JPanel{
 
-    private JLabel jlName, jlShip1,jlShip2,jlShip3, jlShips;
-    private JTextField jtfName, jtfShip1,jtfShip2,jtfShip3;
+    private JLabel  jlShip1,jlShip2,jlShip3, jlShips;
+    private JTextField  jtfShip1,jtfShip2,jtfShip3;
     private JButton jbtnLoadGame;
 
     JLabel jlImgShip1,jlImgShip2,jlImgShip3;
-    private BufferedImage buffShip1,buffShip2,buffShip3;
-    private Image image1,image2,image3;
 
 
     public PlayerVsPcPanel(ActionListener a) {
@@ -52,14 +46,7 @@ public class PlayerVsPcPanel extends JPanel{
 
         this.jlImgShip1 = new JLabel();
 		this.jlImgShip1.setBounds(200,40, 300, 300);
-		try {
-            this.buffShip1=ImageIO.read(getClass().getResourceAsStream("/resources/imgs/barco2.png"));
-            this.image1 = this.buffShip1.getScaledInstance(100, 100, this.image1.SCALE_DEFAULT);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-		this.jlImgShip1.setIcon(new ImageIcon(this.image1));
+		this.jlImgShip1.setIcon(new ImageIcon(Util.rotateImage(Util.images.get("smallShip"))));
 		this.add(this.jlImgShip1);
 
         this.jtfShip1=new JTextField();  
@@ -77,14 +64,7 @@ public class PlayerVsPcPanel extends JPanel{
 
         this.jlImgShip2 = new JLabel();
 		this.jlImgShip2.setBounds(200,190, 300, 300);
-		try {
-            this.buffShip2=ImageIO.read(getClass().getResourceAsStream("/resources/imgs/barco2.png"));
-            this.image2 = this.buffShip2.getScaledInstance(100, 100, this.image2.SCALE_DEFAULT);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-		this.jlImgShip2.setIcon(new ImageIcon(this.image2));
+		this.jlImgShip2.setIcon(new ImageIcon(Util.rotateImage(Util.images.get("mediumShip"))));
 		this.add(this.jlImgShip2);
 
         this.jtfShip2=new JTextField();  
@@ -101,15 +81,8 @@ public class PlayerVsPcPanel extends JPanel{
         this.add(this.jlShip3); 
 
         this.jlImgShip3 = new JLabel();
-		this.jlImgShip3.setBounds(200,340, 300, 300);
-		try {
-            this.buffShip3=ImageIO.read(getClass().getResourceAsStream("/resources/imgs/barco3.png"));
-            this.image3 = this.buffShip3.getScaledInstance(100, 100, this.image3.SCALE_DEFAULT);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-		this.jlImgShip3.setIcon(new ImageIcon(this.image3));
+		this.jlImgShip3.setBounds(180,340, 300, 300);
+		this.jlImgShip3.setIcon(new ImageIcon(Util.rotateImage(Util.images.get("largeShip"))));
 		this.add(this.jlImgShip3);
 
         this.jtfShip3=new JTextField();  
