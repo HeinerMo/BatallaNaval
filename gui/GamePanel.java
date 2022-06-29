@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
@@ -9,7 +11,7 @@ import engine.InputHandler;
 import game.Game;
 import util.Util;
 
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel{
 
     private GameEngine engine;
     private Game game;
@@ -39,11 +41,6 @@ public class GamePanel extends JPanel {
         if (engine != null) {
             engine.setRunning(false);
         }
-        try {
-			Thread.sleep(20);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
     }
     
     public Game getGame() {

@@ -14,10 +14,6 @@ public class LargeShip extends Ship {
 		sections[1] = new ShipSection(x, y + 1);
 		sections[2] = new ShipSection(x, y + 2);
 		sections[3] = new ShipSection(x, y + 3);
-		sections[0].setDamaged(true);
-		sections[1].setDamaged(true);
-		sections[2].setDamaged(true);
-		sections[3].setDamaged(true);
 	}
 
 	@Override

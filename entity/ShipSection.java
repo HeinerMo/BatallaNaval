@@ -64,4 +64,11 @@ public class ShipSection extends Entity {
 		this.y = y;
 	}
 
+	public boolean isColliding(ShipSection s) {
+		if (s.getX() == x && s.getY() == y) {
+			return true;
+		}
+		return false;
+	}
+
 }

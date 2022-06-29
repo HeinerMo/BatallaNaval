@@ -10,7 +10,8 @@ public class Ship extends Entity {
 
 	protected ShipSection[] sections;
 	protected boolean isSelected = false;
-    protected boolean rotated = false;
+	protected boolean rotated = false;
+	private boolean canDrop = false;
 
 	public Ship(int x, int y) {
 		super(x, y);
@@ -18,6 +19,12 @@ public class Ship extends Entity {
 
 	@Override
 	public void update() {
+
+		if (x > 9 || y > 9) {
+			canDrop = false;
+		} else {
+			canDrop = true;
+		}
 
 		if (isSelected) {
 			moveToMouse();
@@ -31,7 +38,11 @@ public class Ship extends Entity {
 	public void render(Graphics2D g) {
 		for (ShipSection ss : sections) {
 			if (isSelected) {
-				g.setColor(new Color(0, 255, 0, 100));
+				if (canDrop) {
+					g.setColor(new Color(0, 255, 0, 100));
+				} else {
+					g.setColor(new Color(255, 0, 0, 100));
+				}
 				g.fillRect(ss.getX() * Util.tileSize, ss.getY() * Util.tileSize, Util.tileSize, Util.tileSize);
 			}
 			ss.render(g);
@@ -61,23 +72,38 @@ public class Ship extends Entity {
 	public boolean isSelected() {
 		return isSelected;
 	}
-	
+
 	protected void moveToMouse() {
 		x = (Util.mouseX * 10) / Util.HEIGHT;
 		y = (Util.mouseY * 10) / Util.HEIGHT;
 		sections[0].updatePosition(x, y);
-		
+
 		for (int i = 1; i < sections.length; i++) {
 			if (!rotated) {
-				sections[i].updatePosition(sections[i -1].x, sections[i - 1].y + 1);
+				sections[i].updatePosition(sections[i - 1].x, sections[i - 1].y + 1);
 			} else {
-				sections[i].updatePosition(sections[i -1].x + 1, sections[i - 1].y);
+				sections[i].updatePosition(sections[i - 1].x + 1, sections[i - 1].y);
 			}
-		}	
+		}
 	}
-	
+
 	public void rotate() {
 		rotated = !rotated;
+	}
+
+	public boolean isColliding(Ship s) {
+		for (ShipSection s1 : s.getSections()) {
+			for (ShipSection s2 : sections) {
+				if (s1.isColliding(s2)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	private ShipSection[] getSections() {
+		return this.sections;
 	}
 
 }

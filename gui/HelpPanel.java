@@ -37,7 +37,7 @@ public class HelpPanel extends JPanel{
 
     void initComponents(ActionListener a) {
         this.jlBienvenido=new JLabel("¡Bienvenido a Battleship!");  
-        this.jlBienvenido.setBounds(260,20, 350,30); 
+        this.jlBienvenido.setBounds(360,20, 350,30); 
         this.jlBienvenido.setFont(new java.awt.Font("Tahoma", 1, 27));
         this.jlBienvenido.setForeground(Color.WHITE);
         this.add(this.jlBienvenido); 

@@ -10,8 +10,6 @@ public class MediumShip extends Ship{
 		this.sections = new ShipSection[2];
 		sections[0] = new ShipSection(x, y);
 		sections[1] = new ShipSection(x, y + 1);
-		sections[0].setDamaged(true);
-		sections[1].setDamaged(true);
     }
 
     @Override

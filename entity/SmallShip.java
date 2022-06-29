@@ -10,7 +10,6 @@ public class SmallShip extends Ship {
         super(x, y);
 		this.sections = new ShipSection[1];
 		sections[0] = new ShipSection(x, y);
-		sections[0].setDamaged(true);
     }
 
     @Override

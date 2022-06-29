@@ -73,7 +73,7 @@ public class Board extends Entity {
 						&& j * Util.tileSize < Util.mouseY && j * Util.tileSize + Util.tileSize > Util.mouseY) {
 				}
 
-				g.setColor(Color.black);
+				g.setColor(new Color(0, 0, 0, 20));
 				g.drawRect(i * Util.tileSize, j * Util.tileSize, Util.tileSize, Util.tileSize);
 			}
 		}
