@@ -153,8 +153,14 @@ public class Window extends JFrame implements ActionListener {
 			} else if (e.getActionCommand().equals("createGame")) {
 				layout.show(this.getContentPane(), "CreateNewGamePanel");
 			} else if (e.getActionCommand().equals("jugVSPc")) {
+				playerVsPcPanel.getJtfShip1().setText("");
+				playerVsPcPanel.getJtfShip2().setText("");
+				playerVsPcPanel.getJtfShip3().setText("");
 				layout.show(this.getContentPane(), "PlayerVsPcPanel");
 			} else if (e.getActionCommand().equals("crear")) {
+				playerVsPcPanel.getJtfShip1().setText("");
+				playerVsPcPanel.getJtfShip2().setText("");
+				playerVsPcPanel.getJtfShip3().setText("");
 				layout.show(this.getContentPane(), "PlayerVsPcPanel");
 			} else if (e.getActionCommand().equals("unirse")) {
 				layout.show(this.getContentPane(), "JoinGamePanel");
