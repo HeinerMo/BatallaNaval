@@ -3,6 +3,8 @@ package gui;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
+
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
@@ -65,36 +67,40 @@ public class Window extends JFrame implements ActionListener {
 
 	private void initMenu() {
 		this.jmbMenuBar = new JMenuBar();
+		this.jmbMenuBar.setBackground(Color.BLACK);
+        this.jmbMenuBar.setForeground(Color.WHITE);
 		this.setJMenuBar(jmbMenuBar);
 
 		this.jmInicio = new JMenuItem("Inicio");
 		jmInicio.setActionCommand("home");
 		this.jmInicio.setFont(new java.awt.Font("Tahoma", 0, 20));
 		this.jmInicio.addActionListener(this);
+		this.jmInicio.setBackground(Color.BLACK);
+        this.jmInicio.setForeground(Color.WHITE);
 		this.jmbMenuBar.add(this.jmInicio);
 
 		this.jmAyuda = new JMenuItem("Ayuda");
 		jmAyuda.setActionCommand("help");
 		this.jmAyuda.setFont(new java.awt.Font("Tahoma", 0, 20));
 		this.jmAyuda.addActionListener(this);
+		this.jmAyuda.setBackground(Color.BLACK);
+        this.jmAyuda.setForeground(Color.WHITE);
 		this.jmbMenuBar.add(this.jmAyuda);
 
 		this.jmSalonFama = new JMenuItem("Salón de la fama");
 		jmSalonFama.setActionCommand("hallOfFame");
 		this.jmSalonFama.setFont(new java.awt.Font("Tahoma", 0, 20));
 		this.jmSalonFama.addActionListener(this);
+		this.jmSalonFama.setBackground(Color.BLACK);
+        this.jmSalonFama.setForeground(Color.WHITE);
 		this.jmbMenuBar.add(this.jmSalonFama);
-
-		this.jmAbrirPartida = new JMenuItem("Abrir partida");
-		jmAbrirPartida.setActionCommand("openGame");
-		this.jmAbrirPartida.setFont(new java.awt.Font("Tahoma", 0, 20));
-		this.jmAbrirPartida.addActionListener(this);
-		this.jmbMenuBar.add(this.jmAbrirPartida);
 
 		this.jmAbrirPartida = new JMenuItem("TestGame");
 		jmAbrirPartida.setActionCommand("GamePanel");
 		this.jmAbrirPartida.setFont(new java.awt.Font("Tahoma", 0, 20));
 		this.jmAbrirPartida.addActionListener(this);
+		this.jmAbrirPartida.setBackground(Color.BLACK);
+        this.jmAbrirPartida.setForeground(Color.WHITE);
 		this.jmbMenuBar.add(this.jmAbrirPartida);
 
 	}// initMenu
