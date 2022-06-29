@@ -2,6 +2,7 @@ package entity;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 import engine.InputHandler;
 import util.Util;
@@ -19,12 +20,6 @@ public class Ship extends Entity {
 
 	@Override
 	public void update() {
-
-		if (x > 9 || y > 9) {
-			canDrop = false;
-		} else {
-			canDrop = true;
-		}
 
 		if (isSelected) {
 			moveToMouse();
@@ -91,19 +86,34 @@ public class Ship extends Entity {
 		rotated = !rotated;
 	}
 
-	public boolean isColliding(Ship s) {
-		for (ShipSection s1 : s.getSections()) {
-			for (ShipSection s2 : sections) {
-				if (s1.isColliding(s2)) {
-					return true;
+	public void updateDrop(ArrayList<Ship> ships) {
+		if (x > 9 || y > 9) {
+			canDrop = false;
+			return;
+		}
+		for (Ship ship : ships) {
+			for (ShipSection s1 : ship.getSections()) {
+				for (ShipSection s2 : sections) {
+					if (this != ship && s1.isColliding(s2)) {
+						canDrop = false;
+						return;
+					}
 				}
 			}
 		}
-		return false;
+		canDrop = true;
+	}
+
+	public boolean canDrop() {
+		return canDrop;
 	}
 
 	private ShipSection[] getSections() {
 		return this.sections;
+	}
+
+	public boolean isReady() {
+		return !isSelected && canDrop;
 	}
 
 }

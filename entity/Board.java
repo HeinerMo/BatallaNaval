@@ -24,20 +24,31 @@ public class Board extends Entity {
 		for (int i = 0; i < large; i++) {
 			ships.add(new LargeShip(13, 0));
 		}
-		justRotated = hasSelected = justClicked = false;
+		justRotated = justClicked = false;
 	}
 
 	@Override
 	public void update() {
+		boolean hasSelected = false;
 		for (Ship s : ships) {
+			if (s.isSelected) {
+				hasSelected = true;
+				break;
+			}
+		}
+		for (Ship s : ships) {
+			s.updateDrop(ships);
 			if (InputHandler.mousePressed) {
 				if (s.mouseOver() && !s.isSelected() && !justClicked && !hasSelected) {
 					s.select();
 					hasSelected = true;
 					justClicked = true;
 				} else if (s.isSelected() && !justClicked && hasSelected) {
-					s.drop(); // TODO implementar colisiones con otros barcos. (Se puede mostrar un mensaje de
-								// error con animaciónes).
+
+					if (s.canDrop()) {
+						s.drop();
+					} // TODO (Se puede mostrar un mensaje de
+						// error con animaciónes).
 					hasSelected = false;
 					justClicked = true;
 				}

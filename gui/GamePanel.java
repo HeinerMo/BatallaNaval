@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,6 +23,7 @@ public class GamePanel extends JPanel{
         this.addKeyListener(InputHandler.getInstance());
         this.addMouseMotionListener(InputHandler.getInstance());
         this.addMouseListener(InputHandler.getInstance());
+        this.setBackground(new Color(0x007b00) );
         this.setFocusable(true);
     }
 

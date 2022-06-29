@@ -20,7 +20,7 @@ public class Game implements ActionListener{
 		} else {
 			Util.tileSize = Util.HEIGHT / Util.TILES;
 		}
-
+		board = new Board(0, 0, small, medium, large);
 		button = new Button((Util.WIDTH - 40 - 200), (Util.HEIGHT - 40) - 50, "listo");
 		button.setWidth(200);
 		button.setHeight(50);
@@ -33,7 +33,6 @@ public class Game implements ActionListener{
 		button.setHover(Color.gray);
 		button.setPressed(Color.cyan);
 		button.setText("Iniciar Juego");
-		board = new Board(0, 0, small, medium, large);
 	}
 
 	public void render(Graphics2D g) {
