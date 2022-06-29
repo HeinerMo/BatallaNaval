@@ -17,6 +17,7 @@ public class Util {
     public static float timeStarted = System.nanoTime();
     public static int mouseX = 0;
     public static int mouseY = 0;
+    public static int tileSize = 0;
 
     public static Map<String, BufferedImage> images = new HashMap<>();
 
@@ -38,6 +39,10 @@ public class Util {
             images.put("mediumShip", ImageIO.read(new File("resources/imgs/barco2.png")));
             images.put("largeShip", ImageIO.read(new File("resources/imgs/barco3.png")));
             images.put("water", ImageIO.read(new File("resources/imgs/water.png")));
+            images.put("flame1", ImageIO.read(new File("resources/imgs/flame1.png")));
+            images.put("flame2", ImageIO.read(new File("resources/imgs/flame2.png")));
+            images.put("flame3", ImageIO.read(new File("resources/imgs/flame3.png")));
+            images.put("flame4", ImageIO.read(new File("resources/imgs/flame4.png")));
         } catch (IOException e) {
             e.printStackTrace();
         }
