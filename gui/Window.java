@@ -18,7 +18,7 @@ public class Window extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private CardLayout layout;
 	private JMenuBar jmbMenuBar;
-	private JMenuItem jmInicio, jmAyuda, jmSalonFama, jmAbrirPartida;
+	private JMenuItem jmInicio, jmAyuda, jmSalonFama;
 	private HomePanel homePanel;
 	private HelpPanel helpPanel;
 	private HallOfFamePanel hallOfFamePanel;
@@ -98,14 +98,6 @@ public class Window extends JFrame implements ActionListener {
 		this.jmSalonFama.setBackground(Color.BLACK);
         this.jmSalonFama.setForeground(Color.WHITE);
 		this.jmbMenuBar.add(this.jmSalonFama);
-
-		this.jmAbrirPartida = new JMenuItem("TestGame");
-		jmAbrirPartida.setActionCommand("GamePanel");
-		this.jmAbrirPartida.setFont(new java.awt.Font("Tahoma", 0, 20));
-		this.jmAbrirPartida.addActionListener(this);
-		this.jmAbrirPartida.setBackground(Color.BLACK);
-        this.jmAbrirPartida.setForeground(Color.WHITE);
-		this.jmbMenuBar.add(this.jmAbrirPartida);
 
 	}// initMenu
 
