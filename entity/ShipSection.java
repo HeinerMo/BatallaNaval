@@ -71,4 +71,10 @@ public class ShipSection extends Entity {
 		return false;
 	}
 
+	public boolean inBounds() {
+		if (x > 9 || y > 9) {
+			return false;
+		}
+		return true;
+	}
 }

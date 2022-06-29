@@ -87,9 +87,11 @@ public class Ship extends Entity {
 	}
 
 	public void updateDrop(ArrayList<Ship> ships) {
-		if (x > 9 || y > 9) {
-			canDrop = false;
-			return;
+		for (ShipSection s : sections) {
+			if (!s.inBounds()) {
+				canDrop = false;
+				return;
+			}
 		}
 		for (Ship ship : ships) {
 			for (ShipSection s1 : ship.getSections()) {
