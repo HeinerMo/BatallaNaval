@@ -1,90 +1,31 @@
 package game;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
 
-import engine.InputHandler;
-import entity.LargeShip;
-import entity.MediumShip;
-import entity.Ship;
-import entity.SmallShip;
+import entity.Board;
 import util.Util;
 
 public class Game {
 
-	private int tiles = 10;
-	private ArrayList<Ship> ships;
-	private boolean justRotated, hasSelected, justClicked;
+	private Board board;
 
-	public Game() {
+	public Game(int small, int medium, int large) {
 		if (Util.WIDTH <= Util.HEIGHT) {
-			Util.tileSize = Util.WIDTH / tiles;
+			Util.tileSize = Util.WIDTH / Util.TILES;
 		} else {
-			Util.tileSize = Util.HEIGHT / tiles;
+			Util.tileSize = Util.HEIGHT / Util.TILES;
 		}
 
-		ships = new ArrayList<>();
-		ships.add(new SmallShip(2, 2));
-		ships.add(new MediumShip(4, 2));
-		ships.add(new LargeShip(6, 2));
-		justRotated = hasSelected = justClicked = false;
+
+		board = new Board(0, 0, small, medium, large);
 	}
 
 	public void render(Graphics2D g) {
-
-		for (int i = 0; i < tiles; i++) {
-			for (int j = 0; j < tiles; j++) {
-				g.drawImage(Util.images.get("water"), i * Util.tileSize, j * Util.tileSize, Util.tileSize,
-						Util.tileSize, null);
-			}
-		}
-		for (int i = 0; i < tiles; i++) {
-			for (int j = 0; j < tiles; j++) {
-				if (i * Util.tileSize < Util.mouseX && i * Util.tileSize + Util.tileSize > Util.mouseX
-						&& j * Util.tileSize < Util.mouseY && j * Util.tileSize + Util.tileSize > Util.mouseY) {
-				}
-
-				g.setColor(Color.black);
-				g.drawRect(i * Util.tileSize, j * Util.tileSize, Util.tileSize, Util.tileSize);
-			}
-		}
-
-		for (Ship s : ships) {
-			s.render(g);
-		}
-
+		board.render(g);
 	}
 
 	public void update() {
-
-		for (Ship s : ships) {
-			if (InputHandler.mousePressed) {
-				if (s.mouseOver() && !s.isSelected() && !justClicked && !hasSelected) {
-					s.select();
-					hasSelected = true;
-					justClicked = true;
-				} else if (s.isSelected() && !justClicked && hasSelected) {
-					s.drop(); //TODO implementar colisiones con otros barcos. (Se puede mostrar un mensaje de error con animaciónes).
-					hasSelected = false;
-					justClicked = true;
-				}
-			} else {
-				justClicked = false;
-			}
-			if (InputHandler.keys[82]) {
-				if (!justRotated && s.isSelected()) {
-					s.rotate();
-					justRotated = true;
-				} else if (!justRotated && s.isSelected()) {
-					s.rotate();
-					justRotated = true;
-				}
-			} else {
-				justRotated = false;
-			}
-			s.update();
-		}
+		board.update();
 	}
 
 }

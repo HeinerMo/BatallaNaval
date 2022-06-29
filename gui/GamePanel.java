@@ -23,11 +23,11 @@ public class GamePanel extends JPanel {
         this.setFocusable(true);
     }
 
-    public void RunGame() {
+    public void RunGame(int small, int medium, int large) {
     	this.requestFocus();
         
         if (game == null) {
-            game = new Game();
+            game = new Game(small, medium, large);
         }
         stopGame();
         engine = new GameEngine(this.getGraphics(), game);
@@ -39,6 +39,15 @@ public class GamePanel extends JPanel {
         if (engine != null) {
             engine.setRunning(false);
         }
+        try {
+			Thread.sleep(20);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+    }
+    
+    public Game getGame() {
+    	return game;
     }
 
 }

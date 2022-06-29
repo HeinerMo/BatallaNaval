@@ -93,12 +93,26 @@ public class PlayerVsPcPanel extends JPanel{
         this.add(this.jtfShip3); 
 
         this.jbtnLoadGame = new JButton("Cargar Partida");
-        this.jbtnLoadGame.setActionCommand("cargarPartidaPlayerVsPc");
+        this.jbtnLoadGame.setActionCommand("iniciarPartida");
         this.jbtnLoadGame.addActionListener(a);
         this.jbtnLoadGame.setFont(new java.awt.Font("Tahoma", 0, 20));
-        this.jbtnLoadGame.setBounds(300, 600, 200, 30);
+        this.jbtnLoadGame.setBounds(300, 400, 200, 30);
         this.jbtnLoadGame.setBackground(Color.WHITE);
         this.jbtnLoadGame.setForeground(Color.BLACK);
         this.add(this.jbtnLoadGame);
     }// initLabels
+
+	public JTextField getJtfShip1() {
+		return jtfShip1;
+	}
+
+	public JTextField getJtfShip2() {
+		return jtfShip2;
+	}
+
+	public JTextField getJtfShip3() {
+		return jtfShip3;
+	}
+    
+    
 }

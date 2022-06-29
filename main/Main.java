@@ -14,4 +14,5 @@ public class Main {
 		Util.loadImages();
 		Window window = new Window();
 	}
+	
 }

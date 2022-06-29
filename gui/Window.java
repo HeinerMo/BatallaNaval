@@ -9,6 +9,9 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
+import util.Util;
 
 public class Window extends JFrame implements ActionListener {
 
@@ -108,9 +111,37 @@ public class Window extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("GamePanel")) {
-			layout.show(this.getContentPane(), "GamePanel");
-			gamePanel.RunGame();
+		if (e.getActionCommand().equals("iniciarPartida")) {
+			if (gamePanel.getGame() == null) {
+				//verificar entradas de usuario
+				int small, medium, large;
+				if (Util.isNumber(playerVsPcPanel.getJtfShip1().getText())) {
+					small = Integer.valueOf(playerVsPcPanel.getJtfShip1().getText());
+				} else {
+					small = 0;
+				}
+				if (Util.isNumber(playerVsPcPanel.getJtfShip2().getText())) {
+					medium = Integer.valueOf(playerVsPcPanel.getJtfShip2().getText());
+				} else {
+					medium = 0;
+				}
+				if (Util.isNumber(playerVsPcPanel.getJtfShip3().getText())) {
+					large = Integer.valueOf(playerVsPcPanel.getJtfShip3().getText());
+				} else {
+					large = 0;
+				}
+				
+				if (small == 0 || medium == 0 || large == 0) {
+					JOptionPane.showMessageDialog(this, "Debe ingresar un valor entero válido superior a cero.", "ERROR", JOptionPane.ERROR_MESSAGE);
+				} else {
+					gamePanel.RunGame(small, medium, large);
+					layout.show(this.getContentPane(), "GamePanel");
+				}
+				
+			} else {
+				gamePanel.RunGame(0, 0, 0);
+				layout.show(this.getContentPane(), "GamePanel");
+			}
 		} else {
 			gamePanel.stopGame();
 			if (e.getActionCommand().equals("home")) {

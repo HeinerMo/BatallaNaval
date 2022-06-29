@@ -30,12 +30,11 @@ public class Ship extends Entity {
 	@Override
 	public void render(Graphics2D g) {
 		for (ShipSection ss : sections) {
+			if (isSelected) {
+				g.setColor(new Color(0, 255, 0, 100));
+				g.fillRect(ss.getX() * Util.tileSize, ss.getY() * Util.tileSize, Util.tileSize, Util.tileSize);
+			}
 			ss.render(g);
-		}
-		if (isSelected) {
-			g.setColor(new Color(0, 255, 0, 100));
-			g.fillRect(((Util.mouseX * 10) / Util.WIDTH) * Util.tileSize,
-					((Util.mouseY * 10) / Util.HEIGHT) * Util.tileSize, Util.tileSize, Util.tileSize);
 		}
 	}
 
@@ -64,8 +63,7 @@ public class Ship extends Entity {
 	}
 	
 	protected void moveToMouse() {
-
-		x = (Util.mouseX * 10) / Util.WIDTH;
+		x = (Util.mouseX * 10) / Util.HEIGHT;
 		y = (Util.mouseY * 10) / Util.HEIGHT;
 		sections[0].updatePosition(x, y);
 		
@@ -75,8 +73,7 @@ public class Ship extends Entity {
 			} else {
 				sections[i].updatePosition(sections[i -1].x + 1, sections[i - 1].y);
 			}
-		}
-		
+		}	
 	}
 	
 	public void rotate() {

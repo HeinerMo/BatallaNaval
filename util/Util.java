@@ -1,23 +1,22 @@
 package util;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
+
 import javax.imageio.ImageIO;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-
 public class Util {
-    public static final int WIDTH = 800;
-    public static final int HEIGHT = 800;
+    public static final int WIDTH = 1000;
+    public static final int HEIGHT = 600;
     public static float timeStarted = System.nanoTime();
     public static int mouseX = 0;
     public static int mouseY = 0;
     public static int tileSize = 0;
+    public static final int TILES = 10;
 
     public static Map<String, BufferedImage> images = new HashMap<>();
 
@@ -63,5 +62,12 @@ public class Util {
         graphic.drawRenderedImage(bimg, null);
         graphic.dispose();
         return rotated;
+    }
+    
+    public static boolean isNumber(String s) {
+    	if (s.matches("^[0-9]+$")) { //regex
+    		return true;
+    	}
+    	return false;
     }
 }

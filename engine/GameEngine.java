@@ -85,7 +85,7 @@ public class GameEngine extends Thread {
 
 	private void clearFrame() {
 		Graphics g = buffer.getGraphics();
-		g.setColor(Color.black);
+		g.setColor(new Color(0x007b00) );
 		g.fillRect(0, 0, Util.WIDTH, Util.HEIGHT);
 	}
 
