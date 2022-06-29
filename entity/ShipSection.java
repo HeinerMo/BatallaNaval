@@ -58,5 +58,10 @@ public class ShipSection extends Entity {
 	public boolean isDamaged() {
 		return isDamaged;
 	}
+	
+	public void updatePosition(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
 
 }

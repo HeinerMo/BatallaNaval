@@ -15,7 +15,7 @@ public class Game {
 
 	private int tiles = 10;
 	private ArrayList<Ship> ships;
-	private boolean rotate, justRotated;
+	private boolean justRotated, hasSelected, justClicked;
 
 	public Game() {
 		if (Util.WIDTH <= Util.HEIGHT) {
@@ -25,35 +25,24 @@ public class Game {
 		}
 
 		ships = new ArrayList<>();
-		ships.add(new SmallShip(2, 2, Util.tileSize));
-		ships.add(new MediumShip(4, 2, Util.tileSize));
-		ships.add(new LargeShip(6, 2, Util.tileSize));
-		rotate = justRotated = false;
+		ships.add(new SmallShip(2, 2));
+		ships.add(new MediumShip(4, 2));
+		ships.add(new LargeShip(6, 2));
+		justRotated = hasSelected = justClicked = false;
 	}
 
 	public void render(Graphics2D g) {
 
 		for (int i = 0; i < tiles; i++) {
 			for (int j = 0; j < tiles; j++) {
-				g.drawImage(Util.images.get("water"), i * Util.tileSize, j * Util.tileSize, Util.tileSize, Util.tileSize, null);
+				g.drawImage(Util.images.get("water"), i * Util.tileSize, j * Util.tileSize, Util.tileSize,
+						Util.tileSize, null);
 			}
 		}
 		for (int i = 0; i < tiles; i++) {
 			for (int j = 0; j < tiles; j++) {
-				if (i * Util.tileSize < InputHandler.mouseX
-						&& i * Util.tileSize + Util.tileSize > InputHandler.mouseX
-						&& j * Util.tileSize < InputHandler.mouseY
-						&& j * Util.tileSize + Util.tileSize > InputHandler.mouseY) {
-					g.setColor(new Color(0, 255, 0, 100));
-					g.fillRect(i * Util.tileSize, j * Util.tileSize, Util.tileSize, Util.tileSize);
-					if (!rotate) {
-						g.drawImage(Util.images.get("largeShip"), i * Util.tileSize, j * Util.tileSize, Util.tileSize, Util.tileSize * 4,
-								null);
-					} else {
-						g.drawImage(Util.rotateImage(Util.images.get("largeShip")), i * Util.tileSize, j * Util.tileSize,
-								Util.tileSize * 4, Util.tileSize,
-								null);
-					}
+				if (i * Util.tileSize < Util.mouseX && i * Util.tileSize + Util.tileSize > Util.mouseX
+						&& j * Util.tileSize < Util.mouseY && j * Util.tileSize + Util.tileSize > Util.mouseY) {
 				}
 
 				g.setColor(Color.black);
@@ -68,16 +57,34 @@ public class Game {
 	}
 
 	public void update() {
-		
-		if (InputHandler.keys[82] && !justRotated) {
-			rotate = !rotate;
-			justRotated = true;
-		} else if (!InputHandler.keys[82] && justRotated){
-			justRotated = false;
-		}
 
 		for (Ship s : ships) {
+			if (InputHandler.mousePressed) {
+				if (s.mouseOver() && !s.isSelected() && !justClicked && !hasSelected) {
+					s.select();
+					hasSelected = true;
+					justClicked = true;
+				} else if (s.isSelected() && !justClicked && hasSelected) {
+					s.drop(); //TODO implementar colisiones con otros barcos. (Se puede mostrar un mensaje de error con animaciónes).
+					hasSelected = false;
+					justClicked = true;
+				}
+			} else {
+				justClicked = false;
+			}
+			if (InputHandler.keys[82]) {
+				if (!justRotated && s.isSelected()) {
+					s.rotate();
+					justRotated = true;
+				} else if (!justRotated && s.isSelected()) {
+					s.rotate();
+					justRotated = true;
+				}
+			} else {
+				justRotated = false;
+			}
 			s.update();
 		}
 	}
+
 }

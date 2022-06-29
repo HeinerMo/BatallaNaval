@@ -33,6 +33,7 @@ public class Window extends JFrame implements ActionListener {
 		initPanels();
 		pack();
 		setLocationRelativeTo(null);
+		setResizable(false);
 		setVisible(true);
 	}
 

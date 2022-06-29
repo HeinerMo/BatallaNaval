@@ -4,20 +4,24 @@ import util.Util;
 import java.awt.Graphics2D;
 
 public class MediumShip extends Ship{
-    private boolean rotated = false;
 
-    public MediumShip(int x, int y, int tileSize) {
-        super(x, y, tileSize);
+    public MediumShip(int x, int y) {
+        super(x, y);
+		this.sections = new ShipSection[2];
+		sections[0] = new ShipSection(x, y);
+		sections[1] = new ShipSection(x, y + 1);
+		sections[0].setDamaged(true);
+		sections[1].setDamaged(true);
     }
 
     @Override
     public void render(Graphics2D g) {
-        super.render(g);
-        if (rotated) {
-            g.drawImage(Util.images.get("mediumShip"), x * tileSize, y * tileSize, tileSize, tileSize * 2, null);
+        if (!rotated) {
+            g.drawImage(Util.images.get("mediumShip"), x * Util.tileSize, y * Util.tileSize, Util.tileSize, Util.tileSize * 2, null);
         } else {
-            g.drawImage(Util.rotateImage(Util.images.get("mediumShip")), x * tileSize, y * tileSize, tileSize * 2, tileSize , null);
+            g.drawImage(Util.rotateImage(Util.images.get("mediumShip")), x * Util.tileSize, y * Util.tileSize, Util.tileSize * 2, Util.tileSize , null);
         }
+        super.render(g); //ultima linea siempre
     }
 
     @Override

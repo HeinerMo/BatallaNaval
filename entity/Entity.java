@@ -22,4 +22,5 @@ public abstract class Entity {
 	public int getY() {
 		return y;
 	}
+	
 }

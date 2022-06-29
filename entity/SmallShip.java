@@ -5,21 +5,23 @@ import java.awt.Graphics2D;
 import util.Util;
 
 public class SmallShip extends Ship {
-    private boolean rotated = false;
 
-    public SmallShip(int x, int y, int tileSize) {
-        super(x, y, tileSize);
+    public SmallShip(int x, int y) {
+        super(x, y);
+		this.sections = new ShipSection[1];
+		sections[0] = new ShipSection(x, y);
+		sections[0].setDamaged(true);
     }
 
     @Override
     public void render(Graphics2D g) {
-        super.render(g);
-        if (rotated) {
-            g.drawImage(Util.images.get("smallShip"), x * tileSize, y * tileSize, tileSize, tileSize, null);
+        if (!rotated) {
+            g.drawImage(Util.images.get("smallShip"), x * Util.tileSize, y * Util.tileSize, Util.tileSize, Util.tileSize, null);
         } else {
-            g.drawImage(Util.rotateImage(Util.images.get("smallShip")), x * tileSize, y * tileSize, tileSize, tileSize,
+            g.drawImage(Util.rotateImage(Util.images.get("smallShip")), x * Util.tileSize, y * Util.tileSize, Util.tileSize, Util.tileSize,
                     null);
         }
+        super.render(g);
     }
 
     @Override
