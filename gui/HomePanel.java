@@ -30,13 +30,13 @@ public class HomePanel extends JPanel{
 
     void initComponents(ActionListener a) {
         this.jlName=new JLabel("Ingrese su nombre");
-        this.jlName.setBounds(300,100, 200,30);
+        this.jlName.setBounds(400,100, 200,30);
         this.jlName.setFont(new java.awt.Font("Tahoma", 0, 20));
         this.jlName.setForeground(Color.WHITE);
         this.add(this.jlName);
 
         this.jtfName=new JTextField();  
-        this.jtfName.setBounds(290,150, 200,30);  
+        this.jtfName.setBounds(390,150, 200,30);  
         this.jtfName.setBackground(Color.BLACK);
         this.jtfName.setForeground(Color.WHITE);
         this.jtfName.setFont(new java.awt.Font("Tahoma", 0, 15));
@@ -46,7 +46,7 @@ public class HomePanel extends JPanel{
         this.jbtnCreate.setActionCommand("createGame");
         this.jbtnCreate.addActionListener(a);
         this.jbtnCreate.setFont(new java.awt.Font("Tahoma", 0, 20));
-        this.jbtnCreate.setBounds(290, 250, 200, 30);
+        this.jbtnCreate.setBounds(390, 250, 200, 30);
         this.jbtnCreate.setBackground(Color.WHITE);
         this.jbtnCreate.setForeground(Color.BLACK);
         this.add(this.jbtnCreate);
@@ -57,7 +57,7 @@ public class HomePanel extends JPanel{
         this.jbtnLoad.setFont(new java.awt.Font("Tahoma", 0, 20));
         this.jbtnLoad.setBackground(Color.WHITE);
         this.jbtnLoad.setForeground(Color.BLACK);
-        this.jbtnLoad.setBounds(290, 300, 200, 30);
+        this.jbtnLoad.setBounds(390, 300, 200, 30);
         this.add(this.jbtnLoad);
     }// initLabels
 }

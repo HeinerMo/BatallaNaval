@@ -28,7 +28,7 @@ public class CreateNewGamePanel extends JPanel{
 
     void initComponents(ActionListener a) {
         this.jlModo=new JLabel("Elija el modo de juego");
-        this.jlModo.setBounds(290,100, 200,30);
+        this.jlModo.setBounds(390,100, 200,30);
         this.jlModo.setFont(new java.awt.Font("Tahoma", 0, 20));
         this.jlModo.setForeground(Color.WHITE);
         this.add(this.jlModo);
@@ -38,7 +38,7 @@ public class CreateNewGamePanel extends JPanel{
         this.jbtnVsPC.setActionCommand("jugVSPc");
         this.jbtnVsPC.addActionListener(a);
         this.jbtnVsPC.setFont(new java.awt.Font("Tahoma", 0, 20));
-        this.jbtnVsPC.setBounds(290, 200, 200, 30);
+        this.jbtnVsPC.setBounds(390, 200, 200, 30);
         this.jbtnVsPC.setBackground(Color.WHITE);
         this.jbtnVsPC.setForeground(Color.BLACK);
         this.add(this.jbtnVsPC);
@@ -47,7 +47,7 @@ public class CreateNewGamePanel extends JPanel{
         this.jbtnUnirse.setActionCommand("unirse");
         this.jbtnUnirse.addActionListener(a);
         this.jbtnUnirse.setFont(new java.awt.Font("Tahoma", 0, 20));
-        this.jbtnUnirse.setBounds(290, 300, 200, 30);
+        this.jbtnUnirse.setBounds(390, 300, 200, 30);
         this.jbtnUnirse.setBackground(Color.WHITE);
         this.jbtnUnirse.setForeground(Color.BLACK);
         this.add(this.jbtnUnirse);
@@ -56,7 +56,7 @@ public class CreateNewGamePanel extends JPanel{
         this.jbtnCrear.setActionCommand("crear");
         this.jbtnCrear.addActionListener(a);
         this.jbtnCrear.setFont(new java.awt.Font("Tahoma", 0, 20));
-        this.jbtnCrear.setBounds(290, 400, 200, 30);
+        this.jbtnCrear.setBounds(390, 400, 200, 30);
         this.jbtnCrear.setBackground(Color.WHITE);
         this.jbtnCrear.setForeground(Color.BLACK);
         this.add(this.jbtnCrear);
