@@ -44,7 +44,7 @@ public class PlayerVsPcPanel extends JPanel{
         this.jlShips.setForeground(Color.WHITE);
         this.add(this.jlShips); 
 
-        this.jlShip1=new JLabel("Caravela");  
+        this.jlShip1=new JLabel("Panga");  
         this.jlShip1.setBounds(200,100, 450,30);  
         this.jlShip1.setFont(new java.awt.Font("Tahoma", 0, 20));
         this.jlShip1.setForeground(Color.WHITE);
@@ -53,7 +53,7 @@ public class PlayerVsPcPanel extends JPanel{
         this.jlImgShip1 = new JLabel();
 		this.jlImgShip1.setBounds(200,40, 300, 300);
 		try {
-            this.buffShip1=ImageIO.read(getClass().getResourceAsStream("/gui/carabela.png"));
+            this.buffShip1=ImageIO.read(getClass().getResourceAsStream("/resources/imgs/barco2.png"));
             this.image1 = this.buffShip1.getScaledInstance(100, 100, this.image1.SCALE_DEFAULT);
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -69,7 +69,7 @@ public class PlayerVsPcPanel extends JPanel{
         this.jtfShip1.setFont(new java.awt.Font("Tahoma", 0, 15));
         this.add(this.jtfShip1); 
 
-        this.jlShip2=new JLabel("Pirata");  
+        this.jlShip2=new JLabel("Barco");  
         this.jlShip2.setBounds(200,250, 450,30);  
         this.jlShip2.setFont(new java.awt.Font("Tahoma", 0, 20));
         this.jlShip2.setForeground(Color.WHITE);
@@ -78,7 +78,7 @@ public class PlayerVsPcPanel extends JPanel{
         this.jlImgShip2 = new JLabel();
 		this.jlImgShip2.setBounds(200,190, 300, 300);
 		try {
-            this.buffShip2=ImageIO.read(getClass().getResourceAsStream("/gui/carabela.png"));
+            this.buffShip2=ImageIO.read(getClass().getResourceAsStream("/resources/imgs/barco2.png"));
             this.image2 = this.buffShip2.getScaledInstance(100, 100, this.image2.SCALE_DEFAULT);
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -94,7 +94,7 @@ public class PlayerVsPcPanel extends JPanel{
         this.jtfShip2.setFont(new java.awt.Font("Tahoma", 0, 15));
         this.add(this.jtfShip2); 
 
-        this.jlShip3=new JLabel("Pirata 2");  
+        this.jlShip3=new JLabel("Buque");  
         this.jlShip3.setBounds(200,400, 450,30);  
         this.jlShip3.setFont(new java.awt.Font("Tahoma", 0, 20));
         this.jlShip3.setForeground(Color.WHITE);
@@ -103,7 +103,7 @@ public class PlayerVsPcPanel extends JPanel{
         this.jlImgShip3 = new JLabel();
 		this.jlImgShip3.setBounds(200,340, 300, 300);
 		try {
-            this.buffShip3=ImageIO.read(getClass().getResourceAsStream("/gui/carabela.png"));
+            this.buffShip3=ImageIO.read(getClass().getResourceAsStream("/resources/imgs/barco3.png"));
             this.image3 = this.buffShip3.getScaledInstance(100, 100, this.image3.SCALE_DEFAULT);
         } catch (IOException e) {
             // TODO Auto-generated catch block
