@@ -20,10 +20,10 @@ import java.awt.*;
 
 public class HelpPanel extends JPanel{
    
-    JLabel jlFoto;
-    private BufferedImage buffDesa;
-    private Image image;
-    private JLabel jlBienvenido,jlInfo, jlInstruc, jlSusan, jlHeiner,  jlSusanCorreo, jlHeinerCorreo;
+    JLabel jlFoto1, jlFoto2;
+    private BufferedImage buffDesa1,buffDesa2;
+    private Image image1,image2;
+    private JLabel jlBienvenido,jlInfo, jlInstruc;
     private JTextArea jtaInstrc, jtaInfo;
 
     public HelpPanel(ActionListener a) {
@@ -43,7 +43,7 @@ public class HelpPanel extends JPanel{
         this.add(this.jlBienvenido); 
 
         this.jlInstruc=new JLabel("Instrucciones del juego");  
-        this.jlInstruc.setBounds(25,90, 350,30); 
+        this.jlInstruc.setBounds(25,60, 350,30); 
         this.jlInstruc.setFont(new java.awt.Font("Tahoma", 1, 20));
         this.jlInstruc.setForeground(Color.WHITE);
         this.add(this.jlInstruc); 
@@ -58,7 +58,7 @@ public class HelpPanel extends JPanel{
                             "ocultó los barcos el oponente.";
 
         this.jtaInstrc = new JTextArea(instrucciones); //cadena de texto
-        this.jtaInstrc.setBounds(25,130, 750,250);
+        this.jtaInstrc.setBounds(25,110, 750,180);
         this.jtaInstrc.setBackground(new Color(0x007b00) );
         this.jtaInstrc.setForeground(Color.WHITE);
         this.jtaInstrc.setFont(new java.awt.Font("Tahoma", 0, 17));
@@ -66,38 +66,48 @@ public class HelpPanel extends JPanel{
         this.add(this.jtaInstrc);
 
         this.jlInfo=new JLabel("Información de los desarrolladores");  
-        this.jlInfo.setBounds(25,400, 400,30); 
+        this.jlInfo.setBounds(25,300, 400,30); 
         this.jlInfo.setFont(new java.awt.Font("Tahoma", 1, 20));
         this.jlInfo.setForeground(Color.WHITE);
         this.add(this.jlInfo);  
 
-        this.jlFoto = new JLabel();
-		this.jlFoto.setBounds(25, 440, 300, 300);
+        this.jlFoto1 = new JLabel();
+		this.jlFoto1.setBounds(25, 340, 200, 250);
 		try {
-            this.buffDesa=ImageIO.read(getClass().getResourceAsStream("/gui/1.jpg"));
-            this.image = this.buffDesa.getScaledInstance(300, 300, this.image.SCALE_DEFAULT);
+            this.buffDesa1=ImageIO.read(getClass().getResourceAsStream("/resources/imgs/SusanF.jpeg"));
+            this.image1 = this.buffDesa1.getScaledInstance(200, 250, this.image1.SCALE_DEFAULT);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-		this.jlFoto.setIcon(new ImageIcon(this.image));
-		this.add(this.jlFoto);
+		this.jlFoto1.setIcon(new ImageIcon(this.image1));
+		this.add(this.jlFoto1);
+
+
+        this.jlFoto2 = new JLabel();
+		this.jlFoto2.setBounds(250, 320, 300, 300);
+		try {
+            this.buffDesa2=ImageIO.read(getClass().getResourceAsStream("/gui/1.jpg"));
+            this.image2 = this.buffDesa2.getScaledInstance(200, 200, this.image2.SCALE_DEFAULT);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+		this.jlFoto2.setIcon(new ImageIcon(this.image2));
+		this.add(this.jlFoto2);
 
         String informacion="     Nombre                      Contacto"+ "\n"+"\n"+
                             "Heiner Monge Lopéz     heinermongelopez@gmail.com"+"\n"+"\n"+
                             "Susan Sojo Castro        sojos204@gmail.com";
 
         this.jtaInfo = new JTextArea(informacion); //cadena de texto
-        this.jtaInfo.setBounds(370,480, 750,250);
+        this.jtaInfo.setBounds(490,400, 750,250);
         this.jtaInfo.setBackground(new Color(0x007b00) );
         this.jtaInfo.setForeground(Color.WHITE);
         this.jtaInfo.setFont(new java.awt.Font("Tahoma", 0, 17));
         this.jtaInfo.setEditable(false);
         this.add(this.jtaInfo);
 
-
-//
-//heinermongelopez@gmail.com
     }// initLabels
 
 }
