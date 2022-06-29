@@ -4,16 +4,20 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+import engine.Animation;
 import engine.InputHandler;
+import engine.VanishingMessage;
 import util.Util;
 
 public class Board extends Entity {
 
 	private ArrayList<Ship> ships;
 	private boolean justRotated, hasSelected, justClicked;
+	private ArrayList<Animation> animations;
 
 	public Board(int x, int y, int small, int medium, int large) {
 		super(x, y);
+		animations = new ArrayList<>();
 		ships = new ArrayList<>();
 		for (int i = 0; i < small; i++) {
 			ships.add(new SmallShip(11, 0));
@@ -30,14 +34,18 @@ public class Board extends Entity {
 	@Override
 	public void update() {
 		boolean hasSelected = false;
+		//Determinar si alguna nave se encuentra seleccionada
 		for (Ship s : ships) {
 			if (s.isSelected) {
 				hasSelected = true;
 				break;
 			}
 		}
+		
+		
 		for (Ship s : ships) {
 			s.updateDrop(ships);
+			//si el mouse fue precionado, determinar si se debe tomar o colocar algún barco
 			if (InputHandler.mousePressed) {
 				if (s.mouseOver() && !s.isSelected() && !justClicked && !hasSelected) {
 					s.select();
@@ -47,8 +55,9 @@ public class Board extends Entity {
 
 					if (s.canDrop()) {
 						s.drop();
-					} // TODO (Se puede mostrar un mensaje de
-						// error con animaciónes).
+					} else {
+						animations.add(new VanishingMessage("No puede colocar la nave en este lugar", 3, Util.mouseX, Util.mouseY));
+					}
 					hasSelected = false;
 					justClicked = true;
 				}
@@ -67,6 +76,19 @@ public class Board extends Entity {
 				justRotated = false;
 			}
 			s.update();
+		}
+
+		ArrayList<Animation> temp = new ArrayList<>();
+		for (Animation a: animations) {
+			a.update();
+			if (a.isFinished()) {
+				temp.add(a);
+			}
+		}
+		
+		//eliminar las animaciones que ya han finalizado
+		for (Animation a: temp) {
+			animations.remove(a);
 		}
 	}
 
@@ -91,6 +113,21 @@ public class Board extends Entity {
 		for (Ship s : ships) {
 			s.render(g);
 		}
+
+		for (Animation a: animations) {
+			a.render(g);
+		}
+	}
+
+	public boolean isGameReady() {
+		boolean ready = true;
+		for (Ship s: ships) {
+			if (!s.isReady()) {
+				ready = false;
+				break;
+			}
+		}
+		return ready;
 	}
 
 }

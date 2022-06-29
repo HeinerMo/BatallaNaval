@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import engine.Animation;
 import entity.Board;
 import gui.Button;
 import util.Util;
@@ -21,7 +23,7 @@ public class Game implements ActionListener{
 			Util.tileSize = Util.HEIGHT / Util.TILES;
 		}
 		board = new Board(0, 0, small, medium, large);
-		button = new Button((Util.WIDTH - 40 - 200), (Util.HEIGHT - 40) - 50, "listo");
+		button = new Button((Util.WIDTH - 40 - 200), (Util.HEIGHT - 40) - 50, "iniciarJuego");
 		button.setWidth(200);
 		button.setHeight(50);
 		button.setListener(this);
@@ -47,6 +49,13 @@ public class Game implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if (e.getActionCommand().equalsIgnoreCase("iniciarJuego")) {
+			if (board.isGameReady()) {
+				System.out.println("yup");
+			} else {
+				System.out.println("Nope");
+			}
+		}
 		System.out.println(e.getActionCommand());
 	}
 
