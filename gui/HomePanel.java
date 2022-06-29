@@ -39,6 +39,7 @@ public class HomePanel extends JPanel{
         this.jtfName.setBounds(290,150, 200,30);  
         this.jtfName.setBackground(Color.BLACK);
         this.jtfName.setForeground(Color.WHITE);
+        this.jtfName.setFont(new java.awt.Font("Tahoma", 0, 15));
         this.add(this.jtfName); 
 
         this.jbtnCreate = new JButton("Crear Partida");

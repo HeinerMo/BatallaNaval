@@ -66,6 +66,7 @@ public class PlayerVsPcPanel extends JPanel{
         this.jtfShip1.setBounds(350,180, 200,30);  
         this.jtfShip1.setBackground(Color.BLACK);
         this.jtfShip1.setForeground(Color.WHITE);
+        this.jtfShip1.setFont(new java.awt.Font("Tahoma", 0, 15));
         this.add(this.jtfShip1); 
 
         this.jlShip2=new JLabel("Pirata");  
@@ -90,6 +91,7 @@ public class PlayerVsPcPanel extends JPanel{
         this.jtfShip2.setBounds(350,330, 200,30); 
         this.jtfShip2.setBackground(Color.BLACK);
         this.jtfShip2.setForeground(Color.WHITE); 
+        this.jtfShip2.setFont(new java.awt.Font("Tahoma", 0, 15));
         this.add(this.jtfShip2); 
 
         this.jlShip3=new JLabel("Pirata 2");  
@@ -114,6 +116,7 @@ public class PlayerVsPcPanel extends JPanel{
         this.jtfShip3.setBounds(350,480, 200,30);  
         this.jtfShip3.setBackground(Color.BLACK);
         this.jtfShip3.setForeground(Color.WHITE); 
+        this.jtfShip3.setFont(new java.awt.Font("Tahoma", 0, 15));
         this.add(this.jtfShip3); 
 
         this.jbtnLoadGame = new JButton("Cargar Partida");
