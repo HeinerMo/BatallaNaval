@@ -1,15 +1,12 @@
 package gui;
 
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
-import engine.InputHandler;
 
 public class Window extends JFrame implements ActionListener {
 
@@ -20,10 +17,10 @@ public class Window extends JFrame implements ActionListener {
 	private HomePanel homePanel;
 	private HelpPanel helpPanel;
 	private HallOfFamePanel hallOfFamePanel;
-	private OpenGamePanel openGamePanel;
 	private GamePanel gamePanel;
 	private CreateNewGamePanel createNewGamePanel;
 	private PlayerVsPcPanel playerVsPcPanel; 
+	private JoinGamePanel joinGamePanel; 
 
 	public Window() {
 		super();
@@ -42,27 +39,27 @@ public class Window extends JFrame implements ActionListener {
 		homePanel = new HomePanel(this);
 		helpPanel = new HelpPanel(this);
 		hallOfFamePanel = new HallOfFamePanel(this);
-		openGamePanel = new OpenGamePanel(this);
 		gamePanel = new GamePanel();
 		createNewGamePanel = new CreateNewGamePanel(this);
 		playerVsPcPanel = new PlayerVsPcPanel(this);
+		joinGamePanel = new JoinGamePanel(this);
 
 		this.add(homePanel);
 		this.add(helpPanel);
 		this.add(hallOfFamePanel);
-		this.add(openGamePanel);
 		this.add(gamePanel);
 		this.add(createNewGamePanel);
 		this.add(playerVsPcPanel);
+		this.add(joinGamePanel);
 
 		// Agregar paneles a la distribución
 		layout.addLayoutComponent(homePanel, "homePanel");
 		layout.addLayoutComponent(helpPanel, "helpPanel");
 		layout.addLayoutComponent(hallOfFamePanel, "hallOfFamePanel");
-		layout.addLayoutComponent(openGamePanel, "openGamePanel");
 		layout.addLayoutComponent(gamePanel, "GamePanel");
 		layout.addLayoutComponent(createNewGamePanel, "CreateNewGamePanel");
 		layout.addLayoutComponent(playerVsPcPanel, "PlayerVsPcPanel");
+		layout.addLayoutComponent(joinGamePanel, "JoinGamePanel");
 
 	}
 
@@ -115,11 +112,15 @@ public class Window extends JFrame implements ActionListener {
 				layout.show(this.getContentPane(), "helpPanel");
 			} else if (e.getActionCommand().equals("hallOfFame")) {
 				layout.show(this.getContentPane(), "hallOfFamePanel");
-			} else if (e.getActionCommand().equals("openGame")) {
-				layout.show(this.getContentPane(), "openGamePanel");
 			} else if (e.getActionCommand().equals("createGame")) {
 				layout.show(this.getContentPane(), "CreateNewGamePanel");
 			} else if (e.getActionCommand().equals("jugVSPc")) {
+				layout.show(this.getContentPane(), "PlayerVsPcPanel");
+			} else if (e.getActionCommand().equals("crear")) {
+				layout.show(this.getContentPane(), "PlayerVsPcPanel");
+			} else if (e.getActionCommand().equals("unirse")) {
+				layout.show(this.getContentPane(), "JoinGamePanel");
+			} else if (e.getActionCommand().equals("joinGame")) {
 				layout.show(this.getContentPane(), "PlayerVsPcPanel");
 			}
 		}
