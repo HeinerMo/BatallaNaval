@@ -87,8 +87,8 @@ public class HelpPanel extends JPanel{
         this.jlFoto2 = new JLabel();
 		this.jlFoto2.setBounds(250, 320, 300, 300);
 		try {
-            this.buffDesa2=ImageIO.read(getClass().getResourceAsStream("/gui/1.jpg"));
-            this.image2 = this.buffDesa2.getScaledInstance(200, 200, this.image2.SCALE_DEFAULT);
+            this.buffDesa2=ImageIO.read(getClass().getResourceAsStream("/resources/imgs/Heiner.png"));
+            this.image2 = this.buffDesa2.getScaledInstance(220, 240, this.image2.SCALE_DEFAULT);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

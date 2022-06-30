@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import engine.Animation;
 import entity.Board;
 import gui.Button;
@@ -51,10 +53,9 @@ public class Game implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equalsIgnoreCase("iniciarJuego")) {
 			if (board.isGameReady()) {
-				System.out.println("yup");
 				this.board.isGameStarted(true);
 			} else {
-				System.out.println("Nope");
+				JOptionPane.showMessageDialog(null, "Debe colocar todos los barcos.", "ERROR", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		System.out.println(e.getActionCommand());

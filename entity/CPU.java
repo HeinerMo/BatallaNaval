@@ -43,8 +43,6 @@ public class CPU {
         position.remove(index);
         }
 
-        System.out.print(x);
-        System.out.println(" "+y);
         return new Dimension(x, y);
     }
 
