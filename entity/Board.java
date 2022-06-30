@@ -11,6 +11,7 @@ import data.PersonData;
 import engine.Animation;
 import engine.BulletAnimation;
 import engine.InputHandler;
+import engine.Sound;
 import engine.VanishingMessage;
 import util.Util;
 import java.awt.Dimension;;
@@ -46,7 +47,7 @@ public class Board extends Entity {
 		justRotated = justClicked = false;
 		cpu = new CPU();
 		turno = gamestarted = ended = false;
-		this.name="";
+		this.name = "";
 	}
 
 	@Override
@@ -60,7 +61,7 @@ public class Board extends Entity {
 	}
 
 	private void updateShips() {
-		for (Ship s: ships) {
+		for (Ship s : ships) {
 			s.update();
 		}
 	}
@@ -93,6 +94,15 @@ public class Board extends Entity {
 				int x = (Util.mouseX * 10) / Util.HEIGHT;
 				int y = (Util.mouseY * 10) / Util.HEIGHT;
 				if (x < 10 && y < 10) {
+					if (!cpu.checkBullet(x, y)) {
+						Sound sound = new Sound();
+						sound.playSound("/resources/audio/miss.wav");
+						animations.add(new VanishingMessage("¡Fallo!", 1, x * Util.tileSize, y * Util.tileSize));
+					} else {
+						Sound sound = new Sound();
+						sound.playSound("/resources/audio/hit.wav");
+						animations.add(new VanishingMessage("¡Acierto!", 1, x * Util.tileSize, y * Util.tileSize));
+					}
 					markers.add(new HitMarker(x, y, cpu.checkBullet(x, y)));
 					bullet = new BulletAnimation(3, x, y);
 					bullet.start();
@@ -103,8 +113,21 @@ public class Board extends Entity {
 
 		if (!turno && gamestarted && bullet.isFinished()) {
 			Dimension dim = cpu.generateNewPosition();
+			boolean hit = false;
 			for (Ship sh : ships) {
-				sh.checkBullet(dim.width, dim.height);
+				if (sh.checkBullet(dim.width, dim.height)) {
+					hit = true;
+				}
+
+				if (!hit) {
+					Sound sound = new Sound();
+					sound.playSound("/resources/audio/miss.wav");
+					animations.add(new VanishingMessage("¡Fallo!", 1, dim.width * Util.tileSize, dim.height * Util.tileSize));
+				} else {
+					Sound sound = new Sound();
+					sound.playSound("/resources/audio/hit.wav");
+					animations.add(new VanishingMessage("¡Acierto!", 1, dim.width * Util.tileSize, dim.height * Util.tileSize));
+				}
 			}
 			bullet = new BulletAnimation(3, dim.width, dim.height);
 			bullet.start();
@@ -181,7 +204,7 @@ public class Board extends Entity {
 	public void render(Graphics2D g) {
 		renderWater(g);
 		renderGrid(g);
-		for (HitMarker m: markers) {
+		for (HitMarker m : markers) {
 			m.render(g);
 		}
 		renderShips(g);
@@ -247,8 +270,8 @@ public class Board extends Entity {
 		return time;
 	}
 
-	public void setWinner(String name){
-		this.name=name;
+	public void setWinner(String name) {
+		this.name = name;
 	}
 
 }

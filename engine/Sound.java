@@ -27,7 +27,7 @@ public class Sound implements Runnable, LineListener{
                     clip.addLineListener(this);
                     this.inputStream = AudioSystem.getAudioInputStream(Sound.class.getResource(url));
                     this.clip.open(inputStream);
-                    this.clip.loop(1);
+                    this.clip.loop(0);
                     while(running){
                         thread.sleep(10);
                     }
