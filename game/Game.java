@@ -64,4 +64,8 @@ public class Game implements ActionListener{
 	public boolean hasEnded() {
 		return board.hasEnded();
 	}
+
+	public void setWinner(String name){
+		this.board.setWinner(name);
+	}
 }
