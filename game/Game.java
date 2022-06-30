@@ -52,6 +52,7 @@ public class Game implements ActionListener{
 		if (e.getActionCommand().equalsIgnoreCase("iniciarJuego")) {
 			if (board.isGameReady()) {
 				System.out.println("yup");
+				this.board.isGameStarted(true);
 			} else {
 				System.out.println("Nope");
 			}
