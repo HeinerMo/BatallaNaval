@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import data.DataManager;
+import data.PersonData;
 import engine.Animation;
 import engine.BulletAnimation;
 import engine.InputHandler;
@@ -23,6 +25,7 @@ public class Board extends Entity {
 	private BulletAnimation bullet;
 	private ArrayList<HitMarker> markers;
 	private float time;
+	private String name;
 
 	public Board(int x, int y, int small, int medium, int large) {
 		super(x, y);
@@ -43,6 +46,7 @@ public class Board extends Entity {
 		justRotated = justClicked = false;
 		cpu = new CPU();
 		turno = gamestarted = ended = false;
+		this.name="";
 	}
 
 	@Override
@@ -66,6 +70,7 @@ public class Board extends Entity {
 			JOptionPane.showMessageDialog(null, "Has ganado");
 			ended = true;
 			time = Util.getTime() - time;
+			DataManager.getInstance().addToRanking(name, time);
 		} else {
 			boolean lost = true;
 			for (Ship s : ships) {
@@ -240,6 +245,10 @@ public class Board extends Entity {
 
 	public float getTime() {
 		return time;
+	}
+
+	public void setWinner(String name){
+		this.name=name;
 	}
 
 }
