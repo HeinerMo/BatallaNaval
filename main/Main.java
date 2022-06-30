@@ -8,8 +8,6 @@ public class Main {
 	public static void main(String[] args) {
 		Util.loadImages();
 		Window window = new Window();
-
 	}
 
-	
 }

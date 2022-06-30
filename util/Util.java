@@ -19,7 +19,6 @@ public class Util {
     public static final int TILES = 10;
 
     public static Map<String, BufferedImage> images = new HashMap<>();
-
     /**
      * Obtener el tiempo transcurrido desde el inicio del juego
      */
