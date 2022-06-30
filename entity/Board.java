@@ -16,12 +16,13 @@ import java.awt.Dimension;;
 public class Board extends Entity {
 
 	private ArrayList<Ship> ships;
-	private boolean justRotated, hasSelected, justClicked, gamestarted;
+	private boolean justRotated, justClicked, gamestarted;
 	private ArrayList<Animation> animations;
 	private CPU cpu;
 	private boolean turno, ended;
 	private BulletAnimation bullet;
 	private ArrayList<HitMarker> markers;
+	private float time;
 
 	public Board(int x, int y, int small, int medium, int large) {
 		super(x, y);
@@ -64,6 +65,7 @@ public class Board extends Entity {
 		if (cpu.hasLost()) {
 			JOptionPane.showMessageDialog(null, "Has ganado");
 			ended = true;
+			time = Util.getTime() - time;
 		} else {
 			boolean lost = true;
 			for (Ship s : ships) {
@@ -174,11 +176,11 @@ public class Board extends Entity {
 	public void render(Graphics2D g) {
 		renderWater(g);
 		renderGrid(g);
-		renderShips(g);
-		renderAnimations(g);
 		for (HitMarker m: markers) {
 			m.render(g);
 		}
+		renderShips(g);
+		renderAnimations(g);
 	}
 
 	private void renderAnimations(Graphics2D g) {
@@ -234,6 +236,10 @@ public class Board extends Entity {
 
 	public boolean hasEnded() {
 		return ended;
+	}
+
+	public float getTime() {
+		return time;
 	}
 
 }
