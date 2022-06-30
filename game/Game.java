@@ -60,5 +60,8 @@ public class Game implements ActionListener{
 		}
 		System.out.println(e.getActionCommand());
 	}
-
+	
+	public boolean hasEnded() {
+		return board.hasEnded();
+	}
 }

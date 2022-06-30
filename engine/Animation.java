@@ -16,11 +16,14 @@ public class Animation {
 	
 	public void start() {
 		startingTime = Util.getTime();
+		finished = false;
 	}
 	
 	public void update() {
 		if (Util.getTime() - startingTime <= duration) {
 			onUpdate();
+		} else {
+			finished = true;
 		}
 	}
 	

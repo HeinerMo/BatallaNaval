@@ -34,15 +34,14 @@ public class GameEngine extends Thread {
 		loop();
 	}
 
-
 	private void loop() {
-		
+
 		running = true;
 		long lastTime = System.nanoTime();
 		long timer = System.currentTimeMillis();
 		final double ns = 1000000000.0 / 60.0;
 		double delta = 0;
-		
+
 		while (running) {
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
@@ -54,11 +53,11 @@ public class GameEngine extends Thread {
 			}
 			render();
 			fps++;
-			
+
 			if (System.currentTimeMillis() - timer >= 1000) {
 				timer += 1000;
-				//window.setTitle("Stats:   |  UPS: " + ups + " FPS: " + fps);
-				//System.out.println("Stats:   |  UPS: " + ups + " FPS: " + fps);
+				// window.setTitle("Stats: | UPS: " + ups + " FPS: " + fps);
+				// System.out.println("Stats: | UPS: " + ups + " FPS: " + fps);
 				ups = 0;
 				fps = 0;
 			}
@@ -66,11 +65,14 @@ public class GameEngine extends Thread {
 	}
 
 	private void update() {
-		//Inputs
-		
-		
-		//updates
-		game.update();
+		// Inputs
+
+		// updates
+		if (game.hasEnded()) {
+			running = false;
+		} else {
+			game.update();
+		}
 	}
 
 	private void render() {
@@ -85,7 +87,7 @@ public class GameEngine extends Thread {
 
 	private void clearFrame() {
 		Graphics g = buffer.getGraphics();
-		g.setColor(new Color(0x007b00) );
+		g.setColor(new Color(0x007b00));
 		g.fillRect(0, 0, Util.WIDTH, Util.HEIGHT);
 	}
 

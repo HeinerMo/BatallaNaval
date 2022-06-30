@@ -35,8 +35,6 @@ public class ShipSection extends Entity {
 		if (isDamaged) {
 			switch (frame) {
 			case 1:
-				
-				
 				g.drawImage(Util.images.get("flame1"), (x * Util.tileSize) + Util.tileSize / 4, (y * Util.tileSize) + Util.tileSize / 4, Util.tileSize / 2, Util.tileSize / 2, null);
 				break;
 			case 2:
@@ -78,9 +76,11 @@ public class ShipSection extends Entity {
 		return true;
 	}
 
-	public void checkBullet(int x, int y){
+	public boolean checkBullet(int x, int y){
 		if(x==this.x && y==this.y){
 			isDamaged=true;
+			return true;
 		}
+		return false;
 	}
 }

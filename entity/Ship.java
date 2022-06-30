@@ -119,9 +119,24 @@ public class Ship extends Entity {
 		return !isSelected && canDrop;
 	}
 
-	public void checkBullet(int x, int y){
+	public boolean checkBullet(int x, int y){
+		boolean hit = false;
 		for (ShipSection ss:sections){
-			ss.checkBullet(x, y);
+			if (ss.checkBullet(x, y)) {
+				hit = true;
+			}
 		}
+		return hit;
+	}
+
+	public boolean isDestroyed() {
+		boolean destroyed = true;
+		for (ShipSection ss: sections) {
+			if (!ss.isDamaged()) {
+				destroyed = false;
+				break;
+			}
+		}
+		return destroyed;
 	}
 }
