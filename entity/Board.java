@@ -38,6 +38,38 @@ public class Board extends Entity {
 
 	@Override
 	public void update() {
+		moveShips();
+		updateAnimations();
+		updateCPU();
+	}
+
+	private void updateCPU() {
+		if (!turno && gamestarted) {
+			Dimension dim = cpu.generateNewPosition();
+			for (Ship sh : ships) {
+				sh.checkBullet(dim.width, dim.height);
+			}
+			turno = !turno;
+		}
+	}
+
+	private void updateAnimations() {
+		ArrayList<Animation> temp = new ArrayList<>();
+		for (Animation a : animations) {
+			a.update();
+			if (a.isFinished()) {
+				temp.add(a);
+			}
+		}
+
+		// eliminar las animaciones que ya han finalizado
+		for (Animation a : temp) {
+			animations.remove(a);
+		}
+
+	}
+
+	private void moveShips() {
 		boolean hasSelected = false;
 		// Determinar si alguna nave se encuentra seleccionada
 		for (Ship s : ships) {
@@ -83,46 +115,23 @@ public class Board extends Entity {
 			s.update();
 		}
 
-		ArrayList<Animation> temp = new ArrayList<>();
-		for (Animation a : animations) {
-			a.update();
-			if (a.isFinished()) {
-				temp.add(a);
-			}
-		}
-
-		// eliminar las animaciones que ya han finalizado
-		for (Animation a : temp) {
-			animations.remove(a);
-		}
-
-		if(!turno && gamestarted){
-			Dimension dim=cpu.generateNewPosition();
-			for (Ship sh: ships){
-				sh.checkBullet(dim.width, dim.height);
-			}
-			turno=!turno;
-		}
 	}
 
 	@Override
 	public void render(Graphics2D g) {
-		for (int i = 0; i < Util.TILES; i++) {
-			for (int j = 0; j < Util.TILES; j++) {
-				g.drawImage(Util.images.get("water"), i * Util.tileSize, j * Util.tileSize, Util.tileSize,
-						Util.tileSize, null);
-			}
-		}
-		for (int i = 0; i < Util.TILES; i++) {
-			for (int j = 0; j < Util.TILES; j++) {
-				if (i * Util.tileSize < Util.mouseX && i * Util.tileSize + Util.tileSize > Util.mouseX
-						&& j * Util.tileSize < Util.mouseY && j * Util.tileSize + Util.tileSize > Util.mouseY) {
-				}
+		renderWater(g);
+		renderGrid(g);
+		renderShips(g);
+		renderAnimations(g);
+	}
 
-				g.setColor(new Color(0, 0, 0, 20));
-				g.drawRect(i * Util.tileSize, j * Util.tileSize, Util.tileSize, Util.tileSize);
-			}
+	private void renderAnimations(Graphics2D g) {
+		for (Animation a : animations) {
+			a.render(g);
 		}
+	}
+
+	private void renderShips(Graphics2D g) {
 		if (!gamestarted) {
 			for (Ship s : ships) {
 				s.render(g);
@@ -131,9 +140,6 @@ public class Board extends Entity {
 			for (Ship s : ships) {
 				s.render(g);
 			}
-		}
-		for (Animation a : animations) {
-			a.render(g);
 		}
 	}
 
@@ -150,6 +156,27 @@ public class Board extends Entity {
 
 	public void isGameStarted(boolean gameStarted) {
 		this.gamestarted = gameStarted;
+	}
+
+	private void renderWater(Graphics2D g) {
+		for (int i = 0; i < Util.TILES; i++) {
+			for (int j = 0; j < Util.TILES; j++) {
+				g.drawImage(Util.images.get("water"), i * Util.tileSize, j * Util.tileSize, Util.tileSize,
+						Util.tileSize, null);
+			}
+		}
+	}
+
+	private void renderGrid(Graphics2D g) {
+		for (int i = 0; i < Util.TILES; i++) {
+			for (int j = 0; j < Util.TILES; j++) {
+				if (i * Util.tileSize < Util.mouseX && i * Util.tileSize + Util.tileSize > Util.mouseX
+						&& j * Util.tileSize < Util.mouseY && j * Util.tileSize + Util.tileSize > Util.mouseY) {
+				}
+				g.setColor(new Color(0, 0, 0, 20));
+				g.drawRect(i * Util.tileSize, j * Util.tileSize, Util.tileSize, Util.tileSize);
+			}
+		}
 	}
 
 }
