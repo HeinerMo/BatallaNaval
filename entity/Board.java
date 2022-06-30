@@ -8,12 +8,15 @@ import engine.Animation;
 import engine.InputHandler;
 import engine.VanishingMessage;
 import util.Util;
+import java.awt.Dimension;;
 
 public class Board extends Entity {
 
 	private ArrayList<Ship> ships;
-	private boolean justRotated, hasSelected, justClicked;
+	private boolean justRotated, hasSelected, justClicked, gamestarted;
 	private ArrayList<Animation> animations;
+	private CPU cpu;
+	private boolean turno;
 
 	public Board(int x, int y, int small, int medium, int large) {
 		super(x, y);
@@ -29,23 +32,24 @@ public class Board extends Entity {
 			ships.add(new LargeShip(13, 0));
 		}
 		justRotated = justClicked = false;
+		cpu = new CPU();
+		turno = gamestarted = false;
 	}
 
 	@Override
 	public void update() {
 		boolean hasSelected = false;
-		//Determinar si alguna nave se encuentra seleccionada
+		// Determinar si alguna nave se encuentra seleccionada
 		for (Ship s : ships) {
 			if (s.isSelected) {
 				hasSelected = true;
 				break;
 			}
 		}
-		
-		
+
 		for (Ship s : ships) {
 			s.updateDrop(ships);
-			//si el mouse fue precionado, determinar si se debe tomar o colocar algún barco
+			// si el mouse fue precionado, determinar si se debe tomar o colocar algún barco
 			if (InputHandler.mousePressed) {
 				if (s.mouseOver() && !s.isSelected() && !justClicked && !hasSelected) {
 					s.select();
@@ -56,7 +60,8 @@ public class Board extends Entity {
 					if (s.canDrop()) {
 						s.drop();
 					} else {
-						animations.add(new VanishingMessage("No puede colocar la nave en este lugar", 3, Util.mouseX, Util.mouseY));
+						animations.add(new VanishingMessage("No puede colocar la nave en este lugar", 3, Util.mouseX,
+								Util.mouseY));
 					}
 					hasSelected = false;
 					justClicked = true;
@@ -79,16 +84,24 @@ public class Board extends Entity {
 		}
 
 		ArrayList<Animation> temp = new ArrayList<>();
-		for (Animation a: animations) {
+		for (Animation a : animations) {
 			a.update();
 			if (a.isFinished()) {
 				temp.add(a);
 			}
 		}
-		
-		//eliminar las animaciones que ya han finalizado
-		for (Animation a: temp) {
+
+		// eliminar las animaciones que ya han finalizado
+		for (Animation a : temp) {
 			animations.remove(a);
+		}
+
+		if(!turno && gamestarted){
+			Dimension dim=cpu.generateNewPosition();
+			for (Ship sh: ships){
+				sh.checkBullet(dim.width, dim.height);
+			}
+			turno=!turno;
 		}
 	}
 
@@ -110,24 +123,33 @@ public class Board extends Entity {
 				g.drawRect(i * Util.tileSize, j * Util.tileSize, Util.tileSize, Util.tileSize);
 			}
 		}
-		for (Ship s : ships) {
-			s.render(g);
+		if (!gamestarted) {
+			for (Ship s : ships) {
+				s.render(g);
+			}
+		} else if (!turno) {
+			for (Ship s : ships) {
+				s.render(g);
+			}
 		}
-
-		for (Animation a: animations) {
+		for (Animation a : animations) {
 			a.render(g);
 		}
 	}
 
 	public boolean isGameReady() {
 		boolean ready = true;
-		for (Ship s: ships) {
+		for (Ship s : ships) {
 			if (!s.isReady()) {
 				ready = false;
 				break;
 			}
 		}
 		return ready;
+	}
+
+	public void isGameStarted(boolean gameStarted) {
+		this.gamestarted = gameStarted;
 	}
 
 }

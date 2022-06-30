@@ -3,6 +3,7 @@ package entity;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.awt.Dimension;
 
 import engine.InputHandler;
 import util.Util;
@@ -118,4 +119,9 @@ public class Ship extends Entity {
 		return !isSelected && canDrop;
 	}
 
+	public void checkBullet(int x, int y){
+		for (ShipSection ss:sections){
+			ss.checkBullet(x, y);
+		}
+	}
 }

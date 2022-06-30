@@ -77,4 +77,10 @@ public class ShipSection extends Entity {
 		}
 		return true;
 	}
+
+	public void checkBullet(int x, int y){
+		if(x==this.x && y==this.y){
+			isDamaged=true;
+		}
+	}
 }
