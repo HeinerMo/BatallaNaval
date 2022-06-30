@@ -126,8 +126,10 @@ public class Window extends JFrame implements ActionListener {
 				if (small == 0 || medium == 0 || large == 0 || small > 5 || medium > 5 || large > 5) {
 					JOptionPane.showMessageDialog(this, "Debe ingresar un valor entero inferior a seis y superior a cero.", "ERROR", JOptionPane.ERROR_MESSAGE);
 				} else {
+					
 					layout.show(this.getContentPane(), "GamePanel");
 					gamePanel.RunGame(small, medium, large);
+					this.gamePanel.setWinner(this.homePanel.getNameWinner());
 				}
 				
 			} else {

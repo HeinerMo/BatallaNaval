@@ -60,4 +60,8 @@ public class HomePanel extends JPanel{
         this.jbtnLoad.setBounds(390, 300, 200, 30);
         this.add(this.jbtnLoad);
     }// initLabels
+
+    public String getNameWinner(){
+        return this.jtfName.getText();
+    }
 }

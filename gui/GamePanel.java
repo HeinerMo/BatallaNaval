@@ -49,4 +49,7 @@ public class GamePanel extends JPanel{
     	return game;
     }
 
+    public void setWinner(String name){
+		this.game.setWinner(name);
+	}
 }
